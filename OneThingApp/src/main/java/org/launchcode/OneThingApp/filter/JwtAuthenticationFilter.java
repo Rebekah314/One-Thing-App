@@ -69,5 +69,5 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter{
 		filterChain.doFilter(request, response);
 		
 	}
-	//
+	//Video for this is around 45:00 in https://www.youtube.com/watch?v=RnZmeczS_DI
 }
