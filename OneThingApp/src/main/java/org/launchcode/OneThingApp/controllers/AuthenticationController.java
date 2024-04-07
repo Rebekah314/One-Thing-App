@@ -14,6 +14,6 @@ public class AuthenticationController {
 		this.authenticationService = authenticationService;
 	}
 	
-	
+	//right at 58:00 in video, https://www.youtube.com/watch?v=RnZmeczS_DI
 
 }
