@@ -11,5 +11,10 @@ public class DemoController {
 	public ResponseEntity<String> demo(){
 		return ResponseEntity.ok("Hello from secured url");
 	}
+	
+	@GetMapping("/admin_only")
+	public ResponseEntity<String>demoAdmin(){
+		return ResponseEntity.ok("Hello from admin url");
+	}
 
 }
