@@ -32,6 +32,9 @@ public class AuthenticationService {
 	//create method for registration
 	
 	public AuthenticationResponse register(User request) {
+		
+		//test registration by sending JSON with email, userName, password, and role
+		
 		User user = new User();
 		user.setEmail(request.getEmail());
 		user.setUsername(request.getUsername());
@@ -46,7 +49,13 @@ public class AuthenticationService {
 		return new AuthenticationResponse(token);
 	}
 	
+	//create method for login
+	
 	public AuthenticationResponse authenticate(User request) {
+		
+		//test login by sending JSON with userName and password
+		//would I rather login be with email and password? 
+		//if so, need TODO: add findByEmail method to UserRepository
 		
 		authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken(
