@@ -59,11 +59,14 @@ public class AuthenticationService {
 		
 		authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken(
-						request.getUsername(), 
+						//request.getUsername(), 
+						request.getEmail(),
 						request.getPassword())
 				);
 		
-		User user = userRepository.findByUsername(request.getUsername()).orElseThrow();
+		//User user = userRepository.findByUsername(request.getUsername()).orElseThrow();
+		User user = userRepository.findByEmail(request.getEmail()).orElseThrow();
+		
 		String token = jwtService.generateToken(user);
 		
 		return new AuthenticationResponse(token);
