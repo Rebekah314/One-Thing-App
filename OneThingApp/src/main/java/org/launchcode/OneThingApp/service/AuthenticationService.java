@@ -54,19 +54,15 @@ public class AuthenticationService {
 	public AuthenticationResponse authenticate(User request) {
 		
 		//test login by sending JSON with userName and password
-		//would I rather login be with email and password? 
-		//if so, need TODO: add findByEmail method to UserRepository
+		//would I rather login be with email and password
 		
 		authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken(
-						//request.getUsername(), 
-						request.getEmail(),
+						request.getUsername(), 
 						request.getPassword())
 				);
 		
-		//User user = userRepository.findByUsername(request.getUsername()).orElseThrow();
-		User user = userRepository.findByEmail(request.getEmail()).orElseThrow();
-		
+		User user = userRepository.findByUsername(request.getUsername()).orElseThrow();
 		String token = jwtService.generateToken(user);
 		
 		return new AuthenticationResponse(token);
