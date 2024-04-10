@@ -26,6 +26,7 @@ public class User implements UserDetails {
     @Enumerated(value = EnumType.STRING)
     private Role role;
     
+    //TODO: link this with OneToMany
     private List<Entry> entries = new ArrayList<>();
 
     public int getId() {
