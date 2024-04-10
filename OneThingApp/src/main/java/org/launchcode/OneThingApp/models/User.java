@@ -5,6 +5,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -24,6 +25,8 @@ public class User implements UserDetails {
 
     @Enumerated(value = EnumType.STRING)
     private Role role;
+    
+    private List<Entry> entries = new ArrayList<>();
 
     public int getId() {
         return id;
