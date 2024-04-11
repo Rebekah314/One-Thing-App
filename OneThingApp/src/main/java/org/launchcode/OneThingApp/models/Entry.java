@@ -8,6 +8,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
@@ -15,7 +16,7 @@ public class Entry {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 	
 	private LocalDate date;
 	
@@ -25,6 +26,7 @@ public class Entry {
     private Status status;
 	
 	@ManyToOne(optional=false)
+	@JoinColumn(name = "user_id")
 	private User author;
 	
 	private User accountabilityFriend;
@@ -32,7 +34,7 @@ public class Entry {
 	//TODO tag with another enum: personal, family, home, financial, car, errand, other 
 	
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 

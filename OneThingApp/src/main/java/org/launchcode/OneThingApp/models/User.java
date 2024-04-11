@@ -13,9 +13,11 @@ import java.util.List;
 @Table(name = "user")
 public class User implements UserDetails {
 
-    @Id
+    private static final long serialVersionUID = 1L;
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     private String username;
 
@@ -28,7 +30,7 @@ public class User implements UserDetails {
     
     private List<Entry> entries = new ArrayList<>();
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
