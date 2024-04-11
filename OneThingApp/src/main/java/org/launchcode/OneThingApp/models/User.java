@@ -26,16 +26,14 @@ public class User implements UserDetails {
     @Enumerated(value = EnumType.STRING)
     private Role role;
     
-    //TODO: link this with OneToMany
+    @OneToMany(mappedBy = "author")
     private List<Entry> entries = new ArrayList<>();
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    
 
     public String getUsername() {
         return username;

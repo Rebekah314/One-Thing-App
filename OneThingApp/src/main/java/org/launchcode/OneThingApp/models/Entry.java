@@ -23,7 +23,10 @@ public class Entry {
 	@Enumerated(value = EnumType.STRING)
     private Status status;
 	
-	//TODO link to author
+
+	private User author;
+	
+	private User accountabilityFriend;
 	//TODO link to accountability partner "friend"
 	
 	//TODO tag with another enum: personal, family, home, financial, car, errand, other 
