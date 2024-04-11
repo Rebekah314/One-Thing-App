@@ -26,7 +26,6 @@ public class User implements UserDetails {
     @Enumerated(value = EnumType.STRING)
     private Role role;
     
-    @OneToMany(mappedBy = "author")
     private List<Entry> entries = new ArrayList<>();
 
     public int getId() {
