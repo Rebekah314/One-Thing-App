@@ -5,16 +5,18 @@ function App() {
 
 console.log("Hello!");
 
+const reqBody = {
+  "usrname": "Erik",
+  "password": "Clinton"
+}
+
 //Communicate from front end to back end with fetch
 fetch('login', {
   "headers": {
 "Content-Type": "application/json"
   },
   "method": "post",
-  "body": {
-    "username": "Erik",
-    "password": "Clinton"
-}
+  "body": JSON.stringify(reqBody)
 });
 
 
