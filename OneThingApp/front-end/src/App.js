@@ -5,6 +5,10 @@ function App() {
 
 console.log("Hello!");
 
+//Communicate from front end to back end with fetch
+fetch('http://localhost:8080/login');
+
+
   return (
     <div className="App">
       <header className="App-header">
