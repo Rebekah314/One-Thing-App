@@ -6,7 +6,12 @@ function App() {
 console.log("Hello!");
 
 //Communicate from front end to back end with fetch
-fetch('http://localhost:8080/login');
+fetch('http://localhost:8080/login', {
+  "headers": {
+"Content-Type": "application/json"
+  },
+  "method": "post"
+});
 
 
   return (
