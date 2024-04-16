@@ -6,7 +6,7 @@ function App() {
 console.log("Hello!");
 
 const reqBody = {
-  "usrname": "Erik",
+  "username": "Erik",
   "password": "Clinton"
 }
 
@@ -17,7 +17,10 @@ fetch('login', {
   },
   "method": "post",
   "body": JSON.stringify(reqBody)
-});
+})
+.then(response => Promise.all([response.json(), response.headers]))
+.then(([body, headers]) => console.log(body.token));
+
 
 
   return (
