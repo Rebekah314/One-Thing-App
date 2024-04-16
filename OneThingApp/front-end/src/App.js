@@ -19,7 +19,10 @@ fetch('login', {
   "body": JSON.stringify(reqBody)
 })
 .then(response => Promise.all([response.json(), response.headers]))
-.then(([body, headers]) => console.log(body.token));
+.then(([body, headers]) => {
+  console.log(body.token);
+  console.log(headers);
+});
 
 
 
