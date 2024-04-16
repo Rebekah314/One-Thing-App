@@ -7,9 +7,9 @@ function App() {
       <header className="App-header">
       <h1>Hello World!!!  </h1>
       <h2>Testing h2</h2>
-      <h3>Testing h2</h3>
-      <h4>Testing h2</h4>
-      <h5>Testing h2</h5>
+      <h3>Testing h3</h3>
+      <h4>Testing h4</h4>
+      <h5>Testing h5</h5>
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
