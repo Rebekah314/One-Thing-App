@@ -27,6 +27,8 @@ useEffect(() => {
   })
   .then(response => Promise.all([response.json(), response.headers]))
   .then(([body, headers]) => {
+    
+    //setJwt is an asynchronous operation
     setJwt(body.token);
     
     //console.log(headers);
