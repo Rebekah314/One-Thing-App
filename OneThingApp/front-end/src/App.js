@@ -4,13 +4,14 @@ import { useEffect, useState } from "react";
 
 function App() {
 
-console.log("Hello!");
+
 
 //TO DO for useState: const [getter, setter] = useState(initialValue);
 const [jwt, setJwt] = useState("");
 
 //empty dependency array (second input in useEffect) tells app to run this code once upon load
 useEffect(() => {
+  console.log("Hello!");
   const reqBody = {
     "username": "Erik",
     "password": "Clinton"
@@ -26,8 +27,8 @@ useEffect(() => {
   })
   .then(response => Promise.all([response.json(), response.headers]))
   .then(([body, headers]) => {
-    const jwt = body.token;
-    console.log("jwt = " + jwt);
+    setJwt(body.token);
+    //console.log("jwt = " + jwt);
     //console.log(headers);
   });
 
@@ -39,10 +40,8 @@ useEffect(() => {
     <div className="App">
       <header className="App-header">
       <h1>Hello World!!!  </h1>
-      <h2>Testing h2</h2>
-      <h3>Testing h3</h3>
-      <h4>Testing h4</h4>
-      <h5>Testing h5</h5>
+      <h2>JWT value is {jwt}</h2>
+
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
