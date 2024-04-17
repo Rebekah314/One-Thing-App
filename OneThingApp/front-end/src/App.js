@@ -10,6 +10,7 @@ function App() {
 const [jwt, setJwt] = useState("");
 
 //empty dependency array (second input in useEffect) tells app to run this code once upon load
+//non-empty dependency tells app to run if value changes
 useEffect(() => {
   console.log(`jwt =  ${jwt}`); //example of template literal
   const reqBody = {
