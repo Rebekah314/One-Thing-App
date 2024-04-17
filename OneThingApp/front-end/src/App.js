@@ -6,7 +6,8 @@ function App() {
 
 console.log("Hello!");
 
-useState
+//TO DO for useState: const [getter, setter] = useState(initialValue);
+const [jwt, setJwt] = useState("");
 
 //empty dependency array (second input in useEffect) tells app to run this code once upon load
 useEffect(() => {
