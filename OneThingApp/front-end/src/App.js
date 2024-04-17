@@ -11,7 +11,7 @@ const [jwt, setJwt] = useState("");
 
 //empty dependency array (second input in useEffect) tells app to run this code once upon load
 useEffect(() => {
-  console.log("Hello!");
+  console.log(`jwt =  ${jwt}`); //example of template literal
   const reqBody = {
     "username": "Erik",
     "password": "Clinton"
@@ -28,7 +28,7 @@ useEffect(() => {
   .then(response => Promise.all([response.json(), response.headers]))
   .then(([body, headers]) => {
     setJwt(body.token);
-    console.log("jwt = " + jwt);
+    
     //console.log(headers);
   });
 
