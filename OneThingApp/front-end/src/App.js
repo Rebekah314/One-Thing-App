@@ -26,7 +26,8 @@ useEffect(() => {
   })
   .then(response => Promise.all([response.json(), response.headers]))
   .then(([body, headers]) => {
-    console.log(body.token);
+    const jwt = body.token;
+    console.log("jwt = " + jwt);
     //console.log(headers);
   });
 
