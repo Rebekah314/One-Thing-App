@@ -28,12 +28,12 @@ useEffect(() => {
   .then(response => Promise.all([response.json(), response.headers]))
   .then(([body, headers]) => {
     setJwt(body.token);
-    //console.log("jwt = " + jwt);
+    console.log("jwt = " + jwt);
     //console.log(headers);
   });
 
 
-}, [])
+}, [jwt])
 
 
   return (
