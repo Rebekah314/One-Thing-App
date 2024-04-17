@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import { useEffect } from "react";
 
 function App() {
 
@@ -8,25 +9,28 @@ console.log("Hello!");
 //**TO DO** figure out why code is running twice
 //try "use effect" hook
 
-const reqBody = {
-  "username": "Erik",
-  "password": "Clinton"
-}
+useEffect(() => {
+  const reqBody = {
+    "username": "Erik",
+    "password": "Clinton"
+  }
+  
+  //Communicate from front end to back end with fetch
+  fetch('login', {
+    "headers": {
+  "Content-Type": "application/json"
+    },
+    "method": "post",
+    "body": JSON.stringify(reqBody)
+  })
+  .then(response => Promise.all([response.json(), response.headers]))
+  .then(([body, headers]) => {
+    console.log(body.token);
+    //console.log(headers);
+  });
 
-//Communicate from front end to back end with fetch
-fetch('login', {
-  "headers": {
-"Content-Type": "application/json"
-  },
-  "method": "post",
-  "body": JSON.stringify(reqBody)
-})
-.then(response => Promise.all([response.json(), response.headers]))
-.then(([body, headers]) => {
-  console.log(body.token);
-  console.log(headers);
-});
 
+}, [])
 
 
   return (
