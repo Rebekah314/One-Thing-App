@@ -5,7 +5,6 @@ function App() {
 
 console.log("Hello!");
 
-//try "use effect" hook so that code doesn't all get run twice
 
 const reqBody = {
   "username": "Erik",
