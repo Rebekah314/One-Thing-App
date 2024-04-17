@@ -8,6 +8,7 @@ console.log("Hello!");
 
 //**TO DO** figure out why code is running twice
 //try "use effect" hook
+//empty dependency array (second input) tells app to run this code once upon load
 
 useEffect(() => {
   const reqBody = {
