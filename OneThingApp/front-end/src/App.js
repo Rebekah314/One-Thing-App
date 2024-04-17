@@ -1,15 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
 
 console.log("Hello!");
 
-//**TO DO** figure out why code is running twice
-//try "use effect" hook
-//empty dependency array (second input) tells app to run this code once upon load
+useState
 
+//empty dependency array (second input in useEffect) tells app to run this code once upon load
 useEffect(() => {
   const reqBody = {
     "username": "Erik",
