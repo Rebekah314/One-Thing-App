@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from "react";
 
@@ -31,6 +30,9 @@ useEffect(() => {
     
     //setJwt is an asynchronous operation
     setJwt(body.token);
+
+    //in codercampus video, he gets token from headers.get("authorization"),
+    //but he is using a 2yo version of spring security
     
     //console.log(headers);
   });
