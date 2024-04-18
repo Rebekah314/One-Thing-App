@@ -1,12 +1,13 @@
 import './App.css';
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useLocalState } from './util/useLocalStorage';
 
 function App() {
 
 
 
 //TO DO for useState: const [getter, setter] = useState(initialValue);
-const [jwt, setJwt] = useState("");
+const [jwt, setJwt] = useLocalState("", "jwt");
 
 //empty dependency array (second input in useEffect) tells app to run this code once upon load
 //non-empty dependency tells app to run if value changes

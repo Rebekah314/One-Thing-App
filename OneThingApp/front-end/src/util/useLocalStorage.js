@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 //following this video from coderCampus: 
 //https://www.youtube.com/watch?v=aIr288-3AFE&list=PL2OrQJM8zmZ2-O_rM2Ju9zYMbY8Ta-8I4&index=12
 
@@ -9,7 +11,7 @@ function useLocalState (defaultValue, key) {
     //local storage stores strings
     //if object needs to be stored (e.g., json), must stringify first
 
-    const [value, setValue] = React.useState(() => {
+    const [value, setValue] = useState(() => {
         const localState = window.localStorage.getItem(key);
 
         return localState !== null
@@ -17,7 +19,7 @@ function useLocalState (defaultValue, key) {
         : defaultValue;
     });
 
-    React.useEffect(() => {
+    useEffect(() => {
         window.localStorage.setItem(key, JSON.stringify(value));
     }, [key, value]);
 
