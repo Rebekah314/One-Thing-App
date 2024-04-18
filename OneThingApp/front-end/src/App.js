@@ -49,7 +49,7 @@ useEffect(() => {
     <div className="App">
       <header className="App-header">
       <h1>Hello World!!!  </h1>
-      <h2>JWT value is {jwt}</h2>
+      <p>JWT value is {jwt}</p>
 
 
       </header>

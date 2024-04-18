@@ -1,0 +1,14 @@
+
+/* this body styling prevents horizontal scrolling */
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+    padding: 20px;
+}
+
+/* this paragraph stying forces text to wrap */
+p {
+    word-break: break-all;
+    white-space: normal;
+}
+
