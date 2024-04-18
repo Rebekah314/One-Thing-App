@@ -12,15 +12,18 @@ function useLocalState (defaultValue, key) {
     //if object needs to be stored (e.g., json), must stringify first
 
     const [value, setValue] = useState(() => {
-        const localState = window.localStorage.getItem(key);
+        const localStorageValue = window.localStorage.getItem(key);
 
-        return localState !== null
-        ? JSON.parse(localState)
-        : defaultValue;
+        return localStorageValue !== null
+            ? JSON.parse(localStorageValue)
+            : defaultValue;
     });
+
+    console.log(`local storage ${key} is ${value}`);
 
     useEffect(() => {
         window.localStorage.setItem(key, JSON.stringify(value));
+        console.log(`updating local storage ${key} to ${value}`);
     }, [key, value]);
 
     return [value, setValue];
