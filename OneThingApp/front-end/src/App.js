@@ -1,7 +1,7 @@
 import './App.css';
 import { useEffect } from "react";
 import { useLocalState } from './util/useLocalStorage';
-import {  Routes, Route, BrowserRouter as Router } from "react-router-dom";
+import {  Routes, Route} from "react-router-dom";
 import Dashboard from './Dashboard';
 import Homepage from './Homepage';
 
