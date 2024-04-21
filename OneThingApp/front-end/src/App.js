@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useLocalState } from './util/useLocalStorage';
 import {  Routes, Route, BrowserRouter as Router } from "react-router-dom";
 import Dashboard from './Dashboard';
+import Homepage from './Homepage';
 
 function App() {
 
@@ -53,7 +54,7 @@ useEffect(() => {
 
       <Routes>
         <Route path="/dashboard" element={ <Dashboard/> }/>
-        <Route path="/" element={() => <div>home</div>} />
+        <Route path="/" element={ <Homepage />} />
       </Routes>
 
 
