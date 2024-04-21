@@ -48,22 +48,14 @@ useEffect(() => {
 
 //Routes is the tag that holds all of the different routes
   return (
-    <div>
-      <Routes>
-        <Route path="/dashboard" element={<Dashboard/>}/>
-        <Route path="/" element={() => <div>home</div>} />
+    
+    <Routes>
+      <Route path="/dashboard" element={ <Dashboard/> }/>
+      <Route path="/" element={() => <div>home</div>} />
 
 
-      </Routes>
-      <div className="App">
-        <header className="App-header">
-        <h1>Hello World!!!  </h1>
-        <p>JWT value is {jwt}</p>
-
-
-        </header>
-      </div>
-    </div>
+    </Routes>
+      
   );
 }
 
