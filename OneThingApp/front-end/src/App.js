@@ -1,7 +1,7 @@
 import './App.css';
 import { useEffect } from "react";
 import { useLocalState } from './util/useLocalStorage';
-import {  Routes, Route } from "react-router-dom";
+import {  Routes, Route, BrowserRouter as Router } from "react-router-dom";
 import Dashboard from './Dashboard';
 
 function App() {
@@ -50,12 +50,13 @@ useEffect(() => {
 //Routes is the tag that holds all of the different routes
   return (
     
-    <Routes>
-      <Route path="/dashboard" element={ <Dashboard/> }/>
-      <Route path="/" element={() => <div>home</div>} />
+
+      <Routes>
+        <Route path="/dashboard" element={ <Dashboard/> }/>
+        <Route path="/" element={() => <div>home</div>} />
+      </Routes>
 
 
-    </Routes>
       
   );
 }
