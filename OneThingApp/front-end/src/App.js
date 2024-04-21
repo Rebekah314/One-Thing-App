@@ -1,6 +1,7 @@
 import './App.css';
 import { useEffect } from "react";
 import { useLocalState } from './util/useLocalStorage';
+import {  Routes, Route } from "react-router-dom";
 
 function App() {
 
@@ -45,15 +46,23 @@ useEffect(() => {
 }, [jwt])
 
 
-
+//Routes is the tag that holds all of the different routes
   return (
-    <div className="App">
-      <header className="App-header">
-      <h1>Hello World!!!  </h1>
-      <p>JWT value is {jwt}</p>
+    <div>
+      <Routes>
+        <Route path="/dashboard" element={<Dashboard/>}/>
+        <Route path="/" element={() => <div>home</div>} />
 
 
-      </header>
+      </Routes>
+      <div className="App">
+        <header className="App-header">
+        <h1>Hello World!!!  </h1>
+        <p>JWT value is {jwt}</p>
+
+
+        </header>
+      </div>
     </div>
   );
 }
