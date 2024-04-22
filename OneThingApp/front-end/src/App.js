@@ -50,6 +50,8 @@ useEffect(() => {
 
 //Routes is the tag that holds all of the different routes
 //This works because main index.js has App component inside of <BrowserRouter" tags
+
+//TO DO: If not logged in, redirect to login page
   return (
     
 
