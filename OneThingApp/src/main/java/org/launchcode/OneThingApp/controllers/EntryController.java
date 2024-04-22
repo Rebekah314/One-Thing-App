@@ -18,7 +18,7 @@ public class EntryController {
 	@PostMapping("")
 	public ResponseEntity<Entry> createEntry(@AuthenticationPrincipal User user){
 		
-		//TO DO: get access to user information for user logged in
+		//TO DO: pass in user information for user logged in
 		entryService.save();
 		
 		
