@@ -16,7 +16,7 @@ public class Entry {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 	
 	private LocalDate date;
 	
@@ -34,11 +34,11 @@ public class Entry {
 	//TODO tag with another enum: personal, family, home, financial, car, errand, other 
 	
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

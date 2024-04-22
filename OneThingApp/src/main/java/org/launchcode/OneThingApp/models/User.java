@@ -17,7 +17,7 @@ public class User implements UserDetails {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     private String username;
 
@@ -31,7 +31,7 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "author")
     private List<Entry> entries = new ArrayList<>();
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
