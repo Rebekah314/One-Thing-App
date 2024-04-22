@@ -13,8 +13,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/entries")
 public class EntryController {
 	
-	EntryService entryService;
+	private final EntryService entryService;
 	
+	public EntryController(EntryService entryService) {
+		this.entryService = entryService;
+	}
+
+
+
 	@PostMapping("")
 	public ResponseEntity<?> createEntry(@AuthenticationPrincipal User user){
 		
