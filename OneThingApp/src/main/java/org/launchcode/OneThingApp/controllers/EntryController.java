@@ -16,13 +16,12 @@ public class EntryController {
 	EntryService entryService;
 	
 	@PostMapping("")
-	public ResponseEntity<Entry> createEntry(@AuthenticationPrincipal User user){
+	public ResponseEntity<?> createEntry(@AuthenticationPrincipal User user){
 		
-		//TO DO: pass in user information for user logged in
-		entryService.save();
+		Entry newEntry = entryService.save(user);
 		
 		
-		return null;
+		return ResponseEntity.ok(newEntry);
 		
 	}
 

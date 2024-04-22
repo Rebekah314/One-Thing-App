@@ -1,15 +1,20 @@
 package org.launchcode.OneThingApp.service;
 
+import org.launchcode.OneThingApp.data.EntryRepository;
 import org.launchcode.OneThingApp.models.Entry;
 import org.launchcode.OneThingApp.models.Status;
 import org.launchcode.OneThingApp.models.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
 @Service
 public class EntryService {
+	
+	@Autowired
+	private EntryRepository entryRepository;
 
-	public void save(User user) {
+	public Entry save(User user) {
 		Entry entry = new Entry();
 		
 
@@ -19,7 +24,10 @@ public class EntryService {
 		//set author to user who is logged in
 		entry.setAuthor(user);
 		
-		//TO DO create a repsository to store entries
+		//store entry in repository, and return entry
+		return entryRepository.save(entry);
+		
+		
 		
 	}
 
