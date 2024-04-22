@@ -7,8 +7,17 @@ const Dashboard = () => {
 
     return (
         <div >
-            <h1>Hello, Dashboard!</h1>
-            <p>JWT Value is {jwt}</p>
+            <h1>Welcome back!</h1>
+            <h3>What's the ONE thing I can do today that will make everythign else easier or unnecessary?</h3>
+
+
+            <textarea id="oneThing" name="oneThing" rows="4" cols="50">
+            </textarea>
+            
+
+            <button>Save Entry: my ONE thing today</button>
+            <hr />
+            <p> JWT Value is {jwt}</p>
         </div>
     );
 };
