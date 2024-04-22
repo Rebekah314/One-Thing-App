@@ -49,6 +49,7 @@ useEffect(() => {
 
 
 //Routes is the tag that holds all of the different routes
+//This works because main index.js has App component inside of <BrowserRouter" tags
   return (
     
 
