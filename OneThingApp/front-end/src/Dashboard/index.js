@@ -8,7 +8,8 @@ const Dashboard = () => {
     function createEntry() {
         fetch("/entries", {
             headers: {
-                "content-type": "application/json",
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${jwt}`,
                 
             }
         })
