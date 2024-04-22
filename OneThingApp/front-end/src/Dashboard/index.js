@@ -5,8 +5,17 @@ const Dashboard = () => {
 
     const [jwt, setJwt] = useLocalState("", "jwt");
 
+    function createEntry() {
+        fetch("/entries", {
+            headers: {
+                "content-type": "application/json",
+                
+            }
+        })
+    }
+
     return (
-        <div >
+        <div style={{margin: "2em"}}>
             <h1>Welcome back!</h1>
             <h3>What's the ONE thing I can do today that will make everythign else easier or unnecessary?</h3>
 
@@ -15,7 +24,7 @@ const Dashboard = () => {
             </textarea>
             
 
-            <button>Save Entry: my ONE thing today</button>
+            <button onClick={() => createEntry()}>Save Entry: my ONE thing today</button>
             <hr />
             <p> JWT Value is {jwt}</p>
         </div>
