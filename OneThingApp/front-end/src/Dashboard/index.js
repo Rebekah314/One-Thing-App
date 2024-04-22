@@ -11,8 +11,14 @@ const Dashboard = () => {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${jwt}`,
                 
-            }
-        })
+            },
+            method: "POST",
+        }).then(response => {
+            if (response.status === 200) return response.json();
+
+        }).then(data => {
+            console.log(data);
+        });
     }
 
     return (
