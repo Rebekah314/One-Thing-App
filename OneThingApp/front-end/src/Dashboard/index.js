@@ -8,7 +8,7 @@ const Dashboard = () => {
     return (
         <div >
             <h1>Hello, Dashboard!</h1>
-            <div>JWT Value is {jwt}</div>
+            <p>JWT Value is {jwt}</p>
         </div>
     );
 };
