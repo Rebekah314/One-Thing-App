@@ -24,6 +24,7 @@ useEffect(() => {
     }
     
     //Communicate from front end to back end with fetch
+    //the 'login' here is from the AuthenticationController on the backend
     fetch('login', {
       "headers": {
     "Content-Type": "application/json"
