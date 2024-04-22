@@ -16,8 +16,8 @@ const Dashboard = () => {
         }).then(response => {
             if (response.status === 200) return response.json();
 
-        }).then(data => {
-            console.log(data);
+        }).then(entry => {
+            window.location.href = `/entries/${entry.id}`
         });
     }
 
