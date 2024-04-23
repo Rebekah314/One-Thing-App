@@ -5,6 +5,9 @@ const Dashboard = () => {
 
     const [jwt, setJwt] = useLocalState("", "jwt");
 
+    //need a variable to store all the data, 
+    //so that it can be displayed in the view below
+
     function createEntry() {
         fetch("/entries", {
             headers: {
@@ -30,6 +33,7 @@ const Dashboard = () => {
             <textarea id="oneThing" name="oneThing" rows="4" cols="50">
             </textarea>
             
+
 
             <button onClick={() => createEntry()}>Save Entry: my ONE thing today</button>
             <hr />
