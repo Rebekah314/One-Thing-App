@@ -1,5 +1,7 @@
 package org.launchcode.OneThingApp.service;
 
+import java.util.Set;
+
 import org.launchcode.OneThingApp.data.EntryRepository;
 import org.launchcode.OneThingApp.models.Entry;
 import org.launchcode.OneThingApp.models.Status;
@@ -27,8 +29,10 @@ public class EntryService {
 		//store entry in repository, and return entry
 		return entryRepository.save(entry);
 		
-		
-		
+	}
+	
+	public Set<Entry> findByUser (User user){
+		return entryRepository.findByUser(user);
 	}
 
 }
