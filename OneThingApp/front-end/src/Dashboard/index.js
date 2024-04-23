@@ -16,7 +16,11 @@ const Dashboard = () => {
                 "Authorization": `Bearer ${jwt}`
             },
             method: "GET",
-        })
+        }).then((response) => {
+            if (response.status === 200) return response.json();
+    }).then((entriesData) => {
+        setEntries(entriesData);
+    });
     }, []);
 
 
@@ -50,7 +54,7 @@ const Dashboard = () => {
             <button onClick={() => createEntry()}>Save Entry: my ONE thing today</button>
             <hr />
             <h3>Priority Prism</h3>
-            {entries ? entries.map(entry => <div></div>) : <></>}
+            {entries ? entries.map((entry) => <div>Entry ID: {entry.id}</div>) : (<></>)}
             <hr />
             <p> JWT Value is {jwt}</p>
         </div>
