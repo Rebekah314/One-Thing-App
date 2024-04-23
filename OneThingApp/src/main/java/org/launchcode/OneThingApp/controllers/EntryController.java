@@ -36,7 +36,7 @@ public class EntryController {
 	
 	@GetMapping("")
 	public ResponseEntity<?> getEntries(@AuthenticationPrincipal User user){
-		Set<Entry> entriesByUser = entryService.findByUser(user);
+		Set<Entry> entriesByUser = entryService.findByAuthor(user);
 		return ResponseEntity.ok(entriesByUser);
 	}
 	

@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface EntryRepository extends JpaRepository<Entry, Long>{
 	
-	Set<Entry> findByUser(User user);
+	Set<Entry> findByAuthor(User user);
 
 }
