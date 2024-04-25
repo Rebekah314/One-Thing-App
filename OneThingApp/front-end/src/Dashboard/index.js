@@ -20,13 +20,12 @@ const Dashboard = () => {
             if (response.status === 200) return response.json();
     }).then((entriesData) => {
         setEntries(entriesData);
-        entriesData.map((entry) => console.log(entry.id));
-        console.log(entries);
-        console.log(entriesData);
+        //entriesData.map((entry) => console.log(entry.id));
+
 
     });
     }, []);
-
+    
 
     function createEntry() {
         fetch("/entries", {
@@ -41,8 +40,14 @@ const Dashboard = () => {
 
         }).then(entry => {
             window.location.href = `/entries/${entry.id}`
+            //window.location.href = `/dashboard`
         });
     }
+
+    // useEffect(() => {
+    //     console.log(`entries: ${entries}`);
+    //     entries.map((entry) => console.log(entry.id));
+    // }, [entries]);
 
     return (
         <div style={{margin: "2em"}}>
@@ -59,13 +64,13 @@ const Dashboard = () => {
             <hr />
             <h3>Priority Prism</h3>
             
-            {/* {entries ? (
+            {entries ? (
                 entries.map((entry) => (
                     <div>Entry ID: {entry.id}</div>
                 ))
             ) : (
                 <></>
-            )} */}
+            )}
             <hr />
             <p> JWT Value is {jwt}</p>
         </div>
