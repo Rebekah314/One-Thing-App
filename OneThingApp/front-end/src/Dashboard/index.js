@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocalState } from '../util/useLocalStorage';
 
 const Dashboard = () => {
@@ -7,7 +7,7 @@ const Dashboard = () => {
 
     //need a variable to store all the data, 
     //so that it can be displayed in the view below
-    const [entries, setEntries] = useState("null");
+    const [entries, setEntries] = useState([]);
 
     useEffect(() => {
         fetch("entries", {
@@ -19,9 +19,11 @@ const Dashboard = () => {
         }).then((response) => {
             if (response.status === 200) return response.json();
     }).then((entriesData) => {
-        console.log(entriesData);
         setEntries(entriesData);
-        console.log(`Entries: ${entries}`);
+        entriesData.map((entry) => console.log(entry.id));
+        console.log(entries);
+        console.log(entriesData);
+
     });
     }, []);
 
@@ -57,13 +59,13 @@ const Dashboard = () => {
             <hr />
             <h3>Priority Prism</h3>
             
-            {entries ? (
+            {/* {entries ? (
                 entries.map((entry) => (
                     <div>Entry ID: {entry.id}</div>
                 ))
             ) : (
                 <></>
-            )}
+            )} */}
             <hr />
             <p> JWT Value is {jwt}</p>
         </div>
