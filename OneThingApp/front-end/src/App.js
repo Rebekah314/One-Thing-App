@@ -53,10 +53,9 @@ useEffect(() => {
 
 //Routes is the tag that holds all of the different routes
 //This works because main index.js has App component inside of <BrowserRouter" tags
+//A PrivateRoute means you have to be logged in to see it
 
   return (
-    
-
       <Routes>
         <Route 
           path="/dashboard" 
@@ -66,12 +65,21 @@ useEffect(() => {
             </PrivateRoute>
           }
         />
+
+        <Route
+        path="/entries/:id"
+          element={
+            <PrivateRoute>
+              <EntryView/>
+            </PrivateRoute>
+          }
+        />
+
         <Route path="/login" element={ <Login />} />
+
         <Route path="/" element={ <Homepage />} />
+
       </Routes>
-
-
-      
   );
 }
 
