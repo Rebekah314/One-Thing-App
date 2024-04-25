@@ -66,7 +66,7 @@ const Dashboard = () => {
             
             {entries ? (
                 entries.map((entry) => (
-                    <div key={entry.id}>Entry ID: {entry.id}</div>
+                    <div key={"entryId" + entry.id}>Entry ID: {entry.id}</div>
                 ))
             ) : (
                 <></>
