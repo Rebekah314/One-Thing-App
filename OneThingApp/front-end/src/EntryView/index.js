@@ -39,6 +39,7 @@ useEffect(() => {
                 <h3>Content: {entry.content}</h3>
                 <h3>Author: {entry.author.username}</h3>
                 
+                <button>Update Entry</button>
 
             </>
             ) : (
