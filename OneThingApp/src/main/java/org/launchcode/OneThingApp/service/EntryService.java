@@ -1,5 +1,6 @@
 package org.launchcode.OneThingApp.service;
 
+import java.util.Optional;
 import java.util.Set;
 
 import org.launchcode.OneThingApp.data.EntryRepository;
@@ -35,6 +36,11 @@ public class EntryService {
 		return entryRepository.findByAuthor(user);
 		//we don't want to wire the repository into the controller
 		//repositories should be wired into services, and then services get wired into controllers
+	}
+
+	public Optional<Entry> findById(long entryId) {
+		return entryRepository.findById(entryId);
+
 	}
 
 }
