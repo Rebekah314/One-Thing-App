@@ -22,8 +22,6 @@ const Dashboard = () => {
     }).then((entriesData) => {
         setEntries(entriesData);
         //entriesData.map((entry) => console.log(entry.id));
-
-
     });
     }, []);
     

@@ -9,7 +9,20 @@ const entryId = window.location.href.split("/entries/")[1];
 const [entry, setEntry] = useState(null);
 
 useEffect(() => {
-    fetch()
+    fetch(`/entry/${entryId}`, {
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${jwt}`,
+            
+        },
+        method: "POST",
+    }).then(response => {
+        if (response.status === 200) return response.json();
+
+    }).then(entry => {
+        window.location.href = `/entries/${entry.id}`
+        //window.location.href = `/dashboard`
+    });
 }, []);
 
 //TO DO: entry fields should only be able to be updated 
