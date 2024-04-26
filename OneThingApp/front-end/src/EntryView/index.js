@@ -23,7 +23,6 @@ useEffect(() => {
 
     }).then(entryData => {
         setEntry(entryData);
-        console.log(entryData);
     });
 }, []);
 
@@ -35,12 +34,18 @@ useEffect(() => {
             <h1>Entry {entryId}</h1>
             {entry ? (
             <>
+                <h2>Status: {entry.status}</h2>
+                <h3>Date: {entry.date}</h3>
+                <h3>Content: {entry.content}</h3>
+                <h3>Author: {entry.author.username}</h3>
+                
 
             </>
             ) : (
             <></>
             )}
-            <h2>Status: {entry.status}</h2>
+            
+            
 
         </div>
     );
