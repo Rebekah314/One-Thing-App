@@ -11,7 +11,7 @@ const [entry, setEntry] = useState(null);
 const [jwt, setJwt] = useLocalState("", "jwt");
 
 useEffect(() => {
-    fetch(`/entry/${entryId}`, {
+    fetch(`/entries/${entryId}`, {
         headers: {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${jwt}`,
@@ -23,6 +23,7 @@ useEffect(() => {
 
     }).then(entryData => {
         setEntry(entryData);
+        console.log(entryData);
     });
 }, []);
 
