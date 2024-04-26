@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useLocalState } from '../util/useLocalStorage';
 
 const EntryView = () => {
 
@@ -7,6 +8,7 @@ const entryId = window.location.href.split("/entries/")[1];
 
 //retrieve entry by ID
 const [entry, setEntry] = useState(null);
+const [jwt, setJwt] = useLocalState("", "jwt");
 
 useEffect(() => {
     fetch(`/entry/${entryId}`, {
@@ -15,13 +17,12 @@ useEffect(() => {
             "Authorization": `Bearer ${jwt}`,
             
         },
-        method: "POST",
+        method: "GET",
     }).then(response => {
         if (response.status === 200) return response.json();
 
-    }).then(entry => {
-        window.location.href = `/entries/${entry.id}`
-        //window.location.href = `/dashboard`
+    }).then(entryData => {
+        setEntry(entryData);
     });
 }, []);
 
