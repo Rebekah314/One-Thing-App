@@ -11,8 +11,6 @@ const [entry, setEntry] = useState(null);
 const [jwt, setJwt] = useLocalState("", "jwt");
 
 //track content so that it can be updated in a state and (eventually) saved to database
-const [content, setContent] = useState("");
-
 function updateEntry(prop, value) {
     entry[prop] = value;
     console.log(entry);
