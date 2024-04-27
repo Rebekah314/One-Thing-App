@@ -17,6 +17,7 @@ public class EntryService {
 	@Autowired
 	private EntryRepository entryRepository;
 
+	//pass in just a user to create a new entry
 	public Entry save(User user) {
 		Entry entry = new Entry();
 		
@@ -43,8 +44,9 @@ public class EntryService {
 
 	}
 
-	public void save(Entry entry) {
-		// TODO Auto-generated method stub
+	//pass in an entry to update the fields of that entry
+	public Entry save(Entry entry) {
+		return entryRepository.save(entry);
 		
 	}
 
