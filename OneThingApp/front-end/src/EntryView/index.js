@@ -36,7 +36,11 @@ useEffect(() => {
             <>
                 <h2>Status: {entry.status}</h2>
                 <h3>Date: {entry.date}</h3>
-                <h3>Content: {entry.content}</h3>
+                <h3>Content: {entry.content}
+                    <textarea id="content" name="entryContent" rows="4" cols="50">
+                        What is the ONE thing I can do today that will make everything else easier or unnecessary?
+                    </textarea>
+                </h3>
                 <h3>Author: {entry.author.username}</h3>
                 
                 <button>Update Entry</button>
