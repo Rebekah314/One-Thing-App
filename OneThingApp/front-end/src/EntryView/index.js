@@ -62,9 +62,10 @@ useEffect(() => {
                 <h2>Status: {entry.status}</h2>
                 <h3>Date: {entry.date}</h3>
                 <h3>Content: {entry.content}
-                    <textarea id="content" rows="4" cols="50" onChange={(event) => updateEntryField("content", event.target.value)}>
-                        What is the ONE thing I can do today that will make everything else easier or unnecessary?
-                    </textarea>
+                    <textarea id="content" rows="4" cols="50" 
+                        onChange={(event) => updateEntryField("content", event.target.value)}
+                        value="What is the ONE thing I can do today that will make everything else easier or unnecessary?"
+                    ></textarea>
                 </h3>
                 <h3>Author: {entry.author.username}</h3>
                 

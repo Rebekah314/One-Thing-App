@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -50,7 +51,10 @@ public class EntryController {
 	}
 	
 	@PutMapping("{entryId}")
-	public ResponseEntity<?> updateEntryById(@PathVariable long entryId, @AuthenticationPrincipal User user) {
-		
-		return ResponseEntity.ok(entryOptional.orElse(new Entry()));
+	public ResponseEntity<?> updateEntryById(@PathVariable long entryId, 
+			@RequestBody Entry entry,
+			@AuthenticationPrincipal User user) {
+		entryService.save(entry);
+		return ResponseEntity.ok(entry);
+	}
 }

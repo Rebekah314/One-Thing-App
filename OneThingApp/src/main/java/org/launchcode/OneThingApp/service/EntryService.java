@@ -43,4 +43,9 @@ public class EntryService {
 
 	}
 
+	public void save(Entry entry) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
