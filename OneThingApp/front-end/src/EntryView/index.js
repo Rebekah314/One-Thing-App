@@ -11,10 +11,27 @@ const [entry, setEntry] = useState(null);
 const [jwt, setJwt] = useLocalState("", "jwt");
 
 //track entry fields so that they can be updated
-function updateEntry(prop, value) {
+function updateEntryField(prop, value) {
     entry[prop] = value;
     console.log(entry);
 }
+
+function updateEntryRepo() {
+    fetch(`/entries/${entryId}`, {
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${jwt}`,
+            
+        },
+        method: "PUT",
+        body: JSON.stringify(entry)
+    }).then(response => {
+        if (response.status === 200) return response.json();
+    }).then(entryData => {
+        setEntry(entryData);
+    });
+};
+
 
 //when "submit" button is clicked, update database with updates
 
@@ -45,13 +62,13 @@ useEffect(() => {
                 <h2>Status: {entry.status}</h2>
                 <h3>Date: {entry.date}</h3>
                 <h3>Content: {entry.content}
-                    <textarea id="content" rows="4" cols="50" onChange={(event) => updateEntry("content", event.target.value)}>
+                    <textarea id="content" rows="4" cols="50" onChange={(event) => updateEntryField("content", event.target.value)}>
                         What is the ONE thing I can do today that will make everything else easier or unnecessary?
                     </textarea>
                 </h3>
                 <h3>Author: {entry.author.username}</h3>
                 
-                <button>Update Entry</button>
+                <button onClick={() => updateEntryRepo()}>Update Entry</button>
 
             </>
             ) : (
