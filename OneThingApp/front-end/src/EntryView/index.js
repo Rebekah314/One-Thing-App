@@ -10,11 +10,13 @@ const entryId = window.location.href.split("/entries/")[1];
 const [entry, setEntry] = useState(null);
 const [jwt, setJwt] = useLocalState("", "jwt");
 
-//track content so that it can be updated in a state and (eventually) saved to database
+//track entry fields so that they can be updated
 function updateEntry(prop, value) {
     entry[prop] = value;
     console.log(entry);
 }
+
+//when "submit" button is clicked, update database with updates
 
 useEffect(() => {
     fetch(`/entries/${entryId}`, {
