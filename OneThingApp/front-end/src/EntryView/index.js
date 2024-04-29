@@ -34,6 +34,7 @@ function updateEntryRepo() {
 
 
 //when "submit" button is clicked, update database with updates
+//This is not working yet... There is a binding error to work out.
 
 useEffect(() => {
     fetch(`/entries/${entryId}`, {
@@ -64,7 +65,6 @@ useEffect(() => {
                 <h3>Content: {entry.content}
                     <textarea id="content" rows="4" cols="50" 
                         onChange={(event) => updateEntryField("content", event.target.value)}
-                        value="What is the ONE thing I can do today that will make everything else easier or unnecessary?"
                     ></textarea>
                 </h3>
                 <h3>Author: {entry.author.username}</h3>

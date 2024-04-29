@@ -54,7 +54,7 @@ public class EntryController {
 	public ResponseEntity<?> updateEntryById(@PathVariable long entryId, 
 			@RequestBody Entry entry,
 			@AuthenticationPrincipal User user) {
-		entryService.save(entry);
-		return ResponseEntity.ok(entry);
+		Entry updatedEntry = entryService.save(entry);
+		return ResponseEntity.ok(updatedEntry);
 	}
 }
