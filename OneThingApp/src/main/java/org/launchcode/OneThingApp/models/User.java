@@ -5,6 +5,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -30,6 +32,9 @@ public class User implements UserDetails {
     
     @OneToMany(mappedBy = "author")
     private List<Entry> entries = new ArrayList<>();
+    
+    @JsonIgnore
+    private List<GrantedAuthority> authorities = List.of(new SimpleGrantedAuthority("USER"));
 
     public Long getId() {
         return id;
@@ -77,8 +82,16 @@ public class User implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
     }
+    
+    
 
-    public String getPassword() {
+    public void setAuthorities(List<GrantedAuthority> authorities) {
+		this.authorities = authorities;
+	}
+
+
+
+	public String getPassword() {
         return password;
     }
 
