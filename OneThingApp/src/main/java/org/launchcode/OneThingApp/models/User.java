@@ -35,6 +35,7 @@ public class User implements UserDetails {
     
     @JsonIgnore
     private List<GrantedAuthority> authorities = List.of(new SimpleGrantedAuthority("USER"));
+    //JsonIgnore annotation is used to ignore this field when updating from the Entry view page. 
 
     public Long getId() {
         return id;
