@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @RestController
 @RequestMapping("/entries")
 public class EntryController {
@@ -53,11 +54,11 @@ public class EntryController {
 	
 	@PutMapping("{entryId}")
 	public ResponseEntity<?> updateEntryById(@PathVariable long entryId, 
-			@RequestBody String jsonStringifiedEntry,
-			//@RequestBody Entry entry DOESN'T WORK
+			//@RequestBody String jsonStringifiedEntry,
+			@RequestBody Entry entry,
 			@AuthenticationPrincipal User user) {
-		Entry updatedEntry = JSON.parse(jsonStringifiedEntry);
-		entryService.save(updatedEntry);
+		//Entry updatedEntry = JSON.parse(jsonStringifiedEntry);
+		Entry updatedEntry = entryService.save(entry);
 		return ResponseEntity.ok(updatedEntry);
 	}
 }
