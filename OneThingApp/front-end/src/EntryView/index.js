@@ -14,6 +14,7 @@ const [jwt, setJwt] = useLocalState("", "jwt");
 function updateEntryField(prop, value) {
     entry[prop] = value;
     console.log(entry);
+    console.log(JSON.stringify(entry));
 }
 
 function updateEntryRepo() {
