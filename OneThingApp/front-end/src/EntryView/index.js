@@ -3,58 +3,64 @@ import { useLocalState } from '../util/useLocalStorage';
 
 const EntryView = () => {
 
-//TO DO: get access to id in a better way. For now, pull from url
-const entryId = window.location.href.split("/entries/")[1];
+    //TO DO: get access to id in a better way. For now, pull from url
+    const entryId = window.location.href.split("/entries/")[1];
 
-//retrieve entry by ID
-const [entry, setEntry] = useState(null);
-const [jwt, setJwt] = useLocalState("", "jwt");
+    //initialize entry with content = empty string
+    const [entry, setEntry] = useState(null);
 
-//track entry fields so that they can be updated
-function updateEntryField(prop, value) {
-    entry[prop] = value;
-    console.log(entry);
-    console.log(JSON.stringify(entry));
-}
+    const [jwt, setJwt] = useLocalState("", "jwt");
 
-function updateEntryRepo() {
-    fetch(`/entries/${entryId}`, {
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${jwt}`,
-            
-        },
-        method: "PUT",
-        body: JSON.stringify(entry)
-    }).then(response => {
-        if (response.status === 200) return response.json();
-    }).then(entryData => {
-        setEntry(entryData);
-    });
-};
+    //track entry fields so that they can be updated
+    function updateEntryField(prop, value) {
+        const newEntry = {...entry};
+        newEntry[prop] = value;
+        setEntry(newEntry);
+        console.log("Entry object:");
+        console.log(entry);
+        console.log("Stringified Entry object:");
+        console.log(JSON.stringify(entry));
+    }
+    
+
+    function updateEntryRepo() {
+        fetch(`/entries/${entryId}`, {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${jwt}`,
+                
+            },
+            method: "PUT",
+            body: JSON.stringify(entry)
+        }).then(response => {
+            if (response.status === 200) return response.json();
+        }).then(entryData => {
+            setEntry(entryData);
+        });
+    };
 
 
-//when "submit" button is clicked, update database with updates
-//This is not working yet... There is a binding error to work out.
+    //when "submit" button is clicked, update database with updates
+    //This is not working yet... There is a binding error to work out.
 
-useEffect(() => {
-    fetch(`/entries/${entryId}`, {
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${jwt}`,
-            
-        },
-        method: "GET",
-    }).then(response => {
-        if (response.status === 200) return response.json();
+    useEffect(() => {
+        fetch(`/entries/${entryId}`, {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${jwt}`,
+                
+            },
+            method: "GET",
+        }).then(response => {
+            if (response.status === 200) return response.json();
 
-    }).then(entryData => {
-        setEntry(entryData);
-    });
-}, []);
+        }).then(entryData => {
+            setEntry(entryData);
+        });
+    }, []);
 
-//TO DO: entry fields should only be able to be updated 
-//by the author, and maybe the accountability friend
+    //TO DO: entry fields should only be able to be updated 
+    //by the author, and maybe the accountability friend
 
     return (
         <div>
@@ -63,9 +69,10 @@ useEffect(() => {
             <>
                 <h2>Status: {entry.status}</h2>
                 <h3>Date: {entry.date}</h3>
-                <h3>Content: {entry.content}
+                <h3>Content: 
                     <textarea id="content" rows="4" cols="50" 
                         onChange={(event) => updateEntryField("content", event.target.value)}
+                        value={entry.content}
                     ></textarea>
                 </h3>
                 <h3>Author: {entry.author.username}</h3>
