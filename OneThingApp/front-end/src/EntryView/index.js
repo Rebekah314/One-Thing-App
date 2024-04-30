@@ -23,6 +23,7 @@ const EntryView = () => {
     }
     
 
+
     function updateEntryRepo() {
         fetch(`/entries/${entryId}`, {
             headers: {
