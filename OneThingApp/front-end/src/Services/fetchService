@@ -1,17 +1,25 @@
 
 //TO DO: refactor so that jwt doesn't need to be passed into this function
 
-function reusableFetch(url, jwt) {
+function reusableFetch(url, requestMethod, requestBody, jwt) {
 
-    fetch(url, {
+    const fetchData = {
         headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${jwt}`,
-            
+            "Content-Type": "application/json"
         },
-        method: "PUT",
-        body: JSON.stringify(entry)
-    }).then(response => {
+        method: requestMethod
+    }
+
+    if (jwt) {
+        fetchData.headers.Authorization = `Bearer ${jwt}`;
+    }
+
+    if (requestBody) {
+        fetchData.headers.body = JSON.stringify(requestBody);
+    }
+
+
+    fetch(url, fetchData).then(response => {
         if (response.status === 200) return response.json();
     })
 
