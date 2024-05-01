@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocalState } from '../util/useLocalStorage';
+import reusableFetch from '../Services/fetchService';
 
 const EntryView = () => {
 
@@ -21,23 +22,15 @@ const EntryView = () => {
         console.log("Stringified Entry object:");
         console.log(JSON.stringify(entry));
     }
-    
+
 
 
     function updateEntryRepo() {
-        fetch(`/entries/${entryId}`, {
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${jwt}`,
-                
-            },
-            method: "PUT",
-            body: JSON.stringify(entry)
-        }).then(response => {
-            if (response.status === 200) return response.json();
-        }).then(entryData => {
-            setEntry(entryData);
-        });
+        
+        reusableFetch(`/entries/${entryId}`, "PUT", entry, jwt).then(
+            entryData => {
+                setEntry(entryData);
+            });
     };
 
 
