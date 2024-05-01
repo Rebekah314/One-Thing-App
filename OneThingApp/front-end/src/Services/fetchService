@@ -1,5 +1,17 @@
 function reusableFetch() {
 
+    fetch(`/entries/${entryId}`, {
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${jwt}`,
+            
+        },
+        method: "PUT",
+        body: JSON.stringify(entry)
+    }).then(response => {
+        if (response.status === 200) return response.json();
+    })
+
 }
 
 export default reusableFetch;
