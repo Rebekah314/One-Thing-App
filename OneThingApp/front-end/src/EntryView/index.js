@@ -27,8 +27,8 @@ const EntryView = () => {
 
     function updateEntryRepo() {
         
-        reusableFetch(`/entries/${entryId}`, "PUT", entry, jwt).then(
-            entryData => {
+        reusableFetch(`/entries/${entryId}`, "PUT", jwt, entry).then(
+            (entryData) => {
                 setEntry(entryData);
             });
     };

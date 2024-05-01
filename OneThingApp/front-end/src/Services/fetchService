@@ -1,7 +1,7 @@
 
 //TO DO: refactor so that jwt doesn't need to be passed into this function
 
-function reusableFetch(url, requestMethod, requestBody, jwt) {
+function reusableFetch(url, requestMethod, jwt, requestBody) {
 
     const fetchData = {
         headers: {
@@ -15,11 +15,11 @@ function reusableFetch(url, requestMethod, requestBody, jwt) {
     };
 
     if (requestBody) {
-        fetchData.headers.body = JSON.stringify(requestBody);
+        fetchData.body = JSON.stringify(requestBody);
     };
 
 
-    fetch(url, fetchData).then(response => {
+    return fetch(url, fetchData).then((response) => {
         if (response.status === 200) return response.json();
     });
 
