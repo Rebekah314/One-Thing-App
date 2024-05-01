@@ -1,6 +1,9 @@
-function reusableFetch() {
 
-    fetch(`/entries/${entryId}`, {
+//TO DO: refactor so that jwt doesn't need to be passed into this function
+
+function reusableFetch(url, jwt) {
+
+    fetch(url, {
         headers: {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${jwt}`,
