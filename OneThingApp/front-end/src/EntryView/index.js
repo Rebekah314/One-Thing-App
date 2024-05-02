@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocalState } from '../util/useLocalStorage';
-import fetchService from '../Services/fetchService';
+
+
 
 
 const EntryView = () => {
