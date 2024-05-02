@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLocalState } from '../util/useLocalStorage';
 import { Link } from 'react-router-dom';
+import { reusableFetch } from '../Services/reusableFetch';
 
 const Dashboard = () => {
 
@@ -11,42 +12,18 @@ const Dashboard = () => {
     const [entries, setEntries] = useState([]);
 
     useEffect(() => {
-        fetch("entries", {
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${jwt}`
-            },
-            method: "GET",
-        }).then((response) => {
-            if (response.status === 200) return response.json();
-    }).then((entriesData) => {
-        setEntries(entriesData);
-        //entriesData.map((entry) => console.log(entry.id));
-    });
+
+        reusableFetch("entries", "GET", jwt).then((entriesData) => {
+            setEntries(entriesData);
+        });
     }, []);
     
 
     function createEntry() {
-        fetch("/entries", {
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${jwt}`,
-                
-            },
-            method: "POST",
-        }).then(response => {
-            if (response.status === 200) return response.json();
-
-        }).then(entry => {
+        reusableFetch("/entries", "POST", jwt).then(entry => {
             window.location.href = `/entries/${entry.id}`
-            //window.location.href = `/dashboard`
         });
     }
-
-    // useEffect(() => {
-    //     console.log(`entries: ${entries}`);
-    //     entries.map((entry) => console.log(entry.id));
-    // }, [entries]);
 
     return (
         <div style={{margin: "2em"}}>
@@ -69,9 +46,7 @@ const Dashboard = () => {
                 ))
             ) : (
                 <></>
-            )}
-            <hr />
-            <p> JWT Value is {jwt}</p>
+            )} 
         </div>
     );
 };
