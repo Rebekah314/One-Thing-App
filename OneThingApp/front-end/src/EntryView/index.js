@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocalState } from '../util/useLocalStorage';
+import fetchService from '../Services/fetchService';
+
 
 const EntryView = () => {
 
@@ -22,23 +24,43 @@ const EntryView = () => {
         console.log(JSON.stringify(entry));
     }
 
-
+    function reusableFetch(url, requestMethod, jwt, requestBody) {
+        const fetchData = {
+            headers: {
+                "Content-Type": "application/json"
+            },
+            method: requestMethod
+        };
+        if (jwt) {
+            fetchData.headers.Authorization = `Bearer ${jwt}`;
+        };
+        if (requestBody) {
+            fetchData.body = JSON.stringify(requestBody);
+        };
+        return fetch(url, fetchData).then(response => {
+            if (response.status === 200) return response.json();
+        }); 
+    }
 
     function updateEntryRepo() {
-        
-        fetch(`/entries/${entryId}`, {
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${jwt}`,
-                
-            },
-            method: "PUT",
-            body: JSON.stringify(entry)
-        }).then(response => {
-            if (response.status === 200) return response.json();
-        }).then(entryData => {
+
+        reusableFetch(`/entries/${entryId}`, "PUT", jwt, entry).then(entryData => {
             setEntry(entryData);
         });
+        
+        // fetch(`/entries/${entryId}`, {
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //         "Authorization": `Bearer ${jwt}`,
+                
+        //     },
+        //     method: "PUT",
+        //     body: JSON.stringify(entry)
+        // }).then(response => {
+        //     if (response.status === 200) return response.json();
+        // }).then(entryData => {
+        //     setEntry(entryData);
+        // });
     };
 
 
