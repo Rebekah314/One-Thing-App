@@ -32,7 +32,7 @@ const EntryView = () => {
     //This is not working yet... There is a binding error to work out.
 
     useEffect(() => {
-        reusableFetch(`/entries/${entryId}`, "GET", jwt, null).then(entryData => {
+        reusableFetch(`/entries/${entryId}`, "GET", jwt).then(entryData => {
             setEntry(entryData);
         });
     }, []);
