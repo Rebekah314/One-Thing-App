@@ -43,42 +43,16 @@ const EntryView = () => {
     }
 
     function updateEntryRepo() {
-
         reusableFetch(`/entries/${entryId}`, "PUT", jwt, entry).then(entryData => {
             setEntry(entryData);
         });
-        
-        // fetch(`/entries/${entryId}`, {
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //         "Authorization": `Bearer ${jwt}`,
-                
-        //     },
-        //     method: "PUT",
-        //     body: JSON.stringify(entry)
-        // }).then(response => {
-        //     if (response.status === 200) return response.json();
-        // }).then(entryData => {
-        //     setEntry(entryData);
-        // });
     };
-
 
     //when "submit" button is clicked, update database with updates
     //This is not working yet... There is a binding error to work out.
 
     useEffect(() => {
-        fetch(`/entries/${entryId}`, {
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${jwt}`,
-                
-            },
-            method: "GET",
-        }).then(response => {
-            if (response.status === 200) return response.json();
-
-        }).then(entryData => {
+        reusableFetch(`/entries/${entryId}`, "GET", jwt, null).then(entryData => {
             setEntry(entryData);
         });
     }, []);
@@ -102,14 +76,10 @@ const EntryView = () => {
                 <h3>Author: {entry.author.username}</h3>
                 
                 <button onClick={() => updateEntryRepo()}>Update Entry</button>
-
             </>
             ) : (
             <></>
             )}
-            
-            
-
         </div>
     );
 };
