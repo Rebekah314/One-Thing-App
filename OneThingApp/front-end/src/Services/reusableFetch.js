@@ -1,7 +1,7 @@
 
 //TO DO: refactor so that jwt doesn't need to be passed into this function
 
-export default function reusableFetch(url, requestMethod, jwt, requestBody) {
+function reusableFetch(url, requestMethod, jwt, requestBody) {
     const fetchData = {
         headers: {
             "Content-Type": "application/json"
@@ -18,3 +18,5 @@ export default function reusableFetch(url, requestMethod, jwt, requestBody) {
         if (response.status === 200) return response.json();
     }); 
 }
+
+export {reusableFetch};
