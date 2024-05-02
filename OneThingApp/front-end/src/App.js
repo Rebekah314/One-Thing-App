@@ -47,9 +47,9 @@ useEffect(() => {
   }
 }, [])
 
-useEffect(() => {
-  console.log(`jwt =  ${jwt}`); //example of template literal
-}, [jwt])
+// useEffect(() => {
+//   console.log(`jwt =  ${jwt}`); //example of template literal
+// }, [jwt])
 
 
 //Routes is the tag that holds all of the different routes
