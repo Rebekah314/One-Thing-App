@@ -20,29 +20,7 @@ const EntryView = () => {
         const newEntry = {...entry};
         newEntry[prop] = value;
         setEntry(newEntry);
-        console.log("Entry object:");
-        console.log(entry);
-        console.log("Stringified Entry object:");
-        console.log(JSON.stringify(entry));
     }
-
-    // function reusableFetch(url, requestMethod, jwt, requestBody) {
-    //     const fetchData = {
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //         },
-    //         method: requestMethod
-    //     };
-    //     if (jwt) {
-    //         fetchData.headers.Authorization = `Bearer ${jwt}`;
-    //     };
-    //     if (requestBody) {
-    //         fetchData.body = JSON.stringify(requestBody);
-    //     };
-    //     return fetch(url, fetchData).then(response => {
-    //         if (response.status === 200) return response.json();
-    //     }); 
-    // }
 
     function updateEntryRepo() {
         reusableFetch(`/entries/${entryId}`, "PUT", jwt, entry).then(entryData => {
