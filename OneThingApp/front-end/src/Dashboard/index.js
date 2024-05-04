@@ -30,16 +30,14 @@ const Dashboard = () => {
             <h1>Welcome back!</h1>
             <h3>What's the ONE thing I can do today that will make everything else easier or unnecessary?</h3>
 
-
             <textarea id="oneThing" name="oneThing" rows="4" cols="50">
             </textarea>
             
-
-
             <button onClick={() => createEntry()}>Save Entry: my ONE thing today</button>
-            <hr />
-            <h3>Priority Prism</h3>
             
+            <hr />
+            
+            <h3>Priority Prism</h3>
             {entries ? (
                 entries.map((entry) => (
                     <div key={`entryId + ${entry.id}`}><Link to={`/entries/${entry.id}`}>Entry ID: {entry.id}</Link></div>
@@ -47,6 +45,7 @@ const Dashboard = () => {
             ) : (
                 <></>
             )} 
+
         </div>
     );
 };
