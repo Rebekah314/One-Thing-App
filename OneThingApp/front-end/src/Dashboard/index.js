@@ -18,7 +18,6 @@ const Dashboard = () => {
         });
     }, []);
     
-
     function createEntry() {
         reusableFetch("/entries", "POST", jwt).then(entry => {
             window.location.href = `/entries/${entry.id}`
