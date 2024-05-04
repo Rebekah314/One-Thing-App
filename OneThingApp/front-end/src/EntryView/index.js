@@ -2,9 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useLocalState } from '../util/useLocalStorage';
 import { reusableFetch } from '../Services/reusableFetch';
 
-
-
-
 const EntryView = () => {
 
     //TO DO: get access to id in a better way. For now, pull from url
