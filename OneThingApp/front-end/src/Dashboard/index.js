@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { reusableFetch } from '../Services/reusableFetch';
 
 const Dashboard = () => {
-    
 
     const [jwt, setJwt] = useLocalState("", "jwt");
 
