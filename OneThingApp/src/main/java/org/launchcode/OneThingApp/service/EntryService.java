@@ -28,6 +28,9 @@ public class EntryService {
 		//set author to user who is logged in
 		entry.setAuthor(user);
 		
+		//initialize content with empty string
+		entry.setContent("");
+		
 		//store entry in repository, and return entry
 		return entryRepository.save(entry);
 		
