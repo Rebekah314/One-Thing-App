@@ -13,7 +13,7 @@ Inspiration from the Book: Get insights and inspiration from The ONE Thing book 
 Technology Stack
 ----------------------
 * Backend: Java, Spring
-* Frontend: JavaScript, React, CSS
+* Frontend: JavaScript, React, CSS, Bootstrap
 * RDMS: MySQL, Hibernate
 
 
