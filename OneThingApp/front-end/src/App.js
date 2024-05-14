@@ -43,6 +43,7 @@ useEffect(() => {
       //but he is using a 2yo version of spring security
       
       //console.log(headers);
+      
     });
   }
 }, [])
