@@ -73,15 +73,24 @@ const Login = () => {
 
                     />
                 </Form.Group>
-                <Button 
-                    className="mt-5"
-                    id="submit" 
-                    type="button" 
-                    size="lg"
-                    onClick={() => sendLoginRequest()}
-                    variant="primary">
-                        Log In
-                </Button>
+                <Row>
+                    <Col className="mt-5">
+                        <Button 
+                            
+                            id="submit" 
+                            type="button" 
+                            size="lg"
+                            onClick={() => sendLoginRequest()}
+                            variant="primary">
+                                Log In
+                        </Button>
+                        <Button
+                        variant="secondary"
+                        type="button"
+                        size="lg"
+                        onClick={() => window.location.href="/"}>Exit</Button>
+                    </Col>
+                </Row>
             </Container>
             
         </>
