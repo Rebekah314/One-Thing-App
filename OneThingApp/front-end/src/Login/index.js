@@ -3,6 +3,7 @@ import { useLocalState } from '../util/useLocalStorage';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 
 
 const Login = () => {
@@ -79,9 +80,9 @@ const Login = () => {
                 <Row>
                     <Col>
                     <div>
-                        <button id="submit" type="button" onClick={() => sendLoginRequest()}>
+                        <Button id="submit" type="button" onClick={() => sendLoginRequest()}>
                             Log In
-                        </button>
+                        </Button>
                     </div>
                     </Col>
                 </Row>
