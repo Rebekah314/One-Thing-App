@@ -26,7 +26,7 @@ const EntryView = () => {
     };
 
     //when "submit" button is clicked, update database with updates
-    //This is not working yet... There is a binding error to work out.
+
 
     useEffect(() => {
         reusableFetch(`/entries/${entryId}`, "GET", jwt).then(entryData => {

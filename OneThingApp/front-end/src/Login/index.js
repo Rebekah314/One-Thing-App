@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { reusableFetch } from '../Services/reusableFetch';
+import { useLocalState } from '../util/useLocalStorage';
 
 const Login = () => {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [jwt, setJwt] = useLocalState("", "jwt");
 
     const loginBody = {
         "username": {username},
@@ -12,7 +14,11 @@ const Login = () => {
     }
 
     function sendLoginRequest() {
-        reusableFetch("/login", "POST", null, loginBody).then();
+        reusableFetch("/login", "POST", null, loginBody).then((response) => {
+            setJwt(response);
+            return window.location.href = "/dashboard";
+        });
+        
     }
 
     return (
