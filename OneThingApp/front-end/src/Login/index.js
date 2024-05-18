@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { reusableFetch } from '../Services/reusableFetch';
 
 const Login = () => {
 
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
-    
+    const loginBody = {
+        "username": {username},
+        "password": {password}
+    }
+
+    function sendLoginRequest() {
+        reusableFetch("/login", "POST", null, loginBody)
+    }
+
     return (
         <>
             <Container>
