@@ -74,7 +74,7 @@ const Login = () => {
                     />
                 </Form.Group>
                 <Row>
-                    <Col className="mt-5">
+                    <Col className="mt-5 d-grid">
                         <Button 
                             id="submit" 
                             type="button" 
@@ -84,6 +84,8 @@ const Login = () => {
                         >
                             Log In
                         </Button>
+                    </Col>
+                    <Col className="mt-5 d-grid">
                         <Button
                             variant="secondary"
                             type="button"
