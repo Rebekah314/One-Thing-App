@@ -12,12 +12,12 @@ const Login = () => {
     }
 
     function sendLoginRequest() {
-        reusableFetch("/login", "POST", null, loginBody)
+        reusableFetch("/login", "POST", null, loginBody).then();
     }
 
     return (
         <>
-            <Container>
+            
                 <div>
                     <label htmlFor="username">Username</label>
                         <input 
@@ -44,7 +44,7 @@ const Login = () => {
 
                     </button>
                 </div>
-            </Container>
+            
         </>
     );
 };

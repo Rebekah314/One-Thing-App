@@ -54,7 +54,7 @@ public class AuthenticationService {
 	public AuthenticationResponse authenticate(User request) {
 		
 		//test login by sending JSON with userName and password
-		//would I rather login be with email and password
+		//would I rather login be with email and password?
 		
 		authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken(
