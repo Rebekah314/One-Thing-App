@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 
 const Login = () => {
@@ -49,43 +50,34 @@ const Login = () => {
     return (
         <>
             <Container>
-                <Row>
-                    <Col>
-                    <div>
-                        <label htmlFor="username">Username</label>
-                        <input 
-                            type="text" 
-                            id="username"
-                            value={username}
-                            onChange={(event)=> setUsername(event.target.value)}
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label htmlFor="username">Username</Form.Label>
+                    <Form.Control 
+                        type="text" 
+                        id="username"
+                        placeholder="Type in your Username"
+                        value={username}
+                        onChange={(event)=> setUsername(event.target.value)}
+                    />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Label htmlFor="password">Password</Form.Label>
+                    <Form.Control 
+                        type="password" 
+                        id="password"
+                        placeholder="Type in your password"
+                        value={password}
+                        onChange={(event)=> setPassword(event.target.value)}
 
-                        />
-                    </div>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <div>
-                            <label htmlFor="password">Password</label>
-                            <input 
-                                type="password" 
-                                id="password"
-                                value={password}
-                                onChange={(event)=> setPassword(event.target.value)}
-
-                            />
-                        </div>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                    <div>
-                        <Button id="submit" type="button" onClick={() => sendLoginRequest()}>
-                            Log In
-                        </Button>
-                    </div>
-                    </Col>
-                </Row>
+                    />
+                </Form.Group>
+                <Button 
+                    id="submit" 
+                    type="button" 
+                    onClick={() => sendLoginRequest()}
+                    variant="primary">
+                        Log In
+                </Button>
             </Container>
             
         </>
