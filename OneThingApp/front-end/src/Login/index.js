@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { useLocalState } from '../util/useLocalStorage';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 
 const Login = () => {
@@ -10,9 +13,6 @@ const Login = () => {
 
     function sendLoginRequest() {
 
-        
-        
-            
               const reqBody = {
                 "username": username,
                 "password": password
@@ -47,33 +47,45 @@ const Login = () => {
 
     return (
         <>
-            
-                <div>
-                    <label htmlFor="username">Username</label>
+            <Container>
+                <Row>
+                    <Col>
+                    <div>
+                        <label htmlFor="username">Username</label>
                         <input 
                             type="text" 
                             id="username"
                             value={username}
                             onChange={(event)=> setUsername(event.target.value)}
- 
-                        />
-                </div>
-                <div>
-                    <label htmlFor="password">Password</label>
-                        <input 
-                            type="password" 
-                            id="password"
-                            value={password}
-                            onChange={(event)=> setPassword(event.target.value)}
 
                         />
-                </div>
-                <div>
-                    <button id="submit" type="button" onClick={() => sendLoginRequest()}>
-                        Log In
-                    </button>
-                </div>
+                    </div>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <div>
+                            <label htmlFor="password">Password</label>
+                            <input 
+                                type="password" 
+                                id="password"
+                                value={password}
+                                onChange={(event)=> setPassword(event.target.value)}
 
+                            />
+                        </div>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                    <div>
+                        <button id="submit" type="button" onClick={() => sendLoginRequest()}>
+                            Log In
+                        </button>
+                    </div>
+                    </Col>
+                </Row>
+            </Container>
             
         </>
     );
