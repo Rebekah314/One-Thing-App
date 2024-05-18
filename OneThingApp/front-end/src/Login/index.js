@@ -49,31 +49,35 @@ const Login = () => {
 
     return (
         <>
-            <Container>
+            <Container className="mt-5">
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label htmlFor="username">Username</Form.Label>
+                    <Form.Label htmlFor="username" className="fs-4">Username</Form.Label>
                     <Form.Control 
                         type="text" 
                         id="username"
                         placeholder="Type in your Username"
+                        size="lg"
                         value={username}
                         onChange={(event)=> setUsername(event.target.value)}
                     />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label htmlFor="password">Password</Form.Label>
+                    <Form.Label htmlFor="password" className="fs-4">Password</Form.Label>
                     <Form.Control 
                         type="password" 
                         id="password"
                         placeholder="Type in your password"
+                        size="lg"
                         value={password}
                         onChange={(event)=> setPassword(event.target.value)}
 
                     />
                 </Form.Group>
                 <Button 
+                    className="mt-5"
                     id="submit" 
                     type="button" 
+                    size="lg"
                     onClick={() => sendLoginRequest()}
                     variant="primary">
                         Log In
