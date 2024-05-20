@@ -27,7 +27,7 @@ const Dashboard = () => {
     return (
         <div style={{margin: "2em"}}>
             <h1>Welcome back!</h1>
-            <h3>What's the ONE thing I can do today that will make everything else easier or unnecessary?</h3>
+            <h3>What's the ONE thing YOU can do today that will make everything else easier or unnecessary?</h3>
 
             <textarea id="oneThing" name="oneThing" rows="4" cols="50">
             </textarea>
