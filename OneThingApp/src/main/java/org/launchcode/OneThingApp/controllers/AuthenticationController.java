@@ -1,6 +1,5 @@
 package org.launchcode.OneThingApp.controllers;
 
-import java.io.Console;
 
 import org.launchcode.OneThingApp.models.AuthenticationResponse;
 import org.launchcode.OneThingApp.models.User;

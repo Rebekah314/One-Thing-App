@@ -1,6 +1,6 @@
 package org.launchcode.OneThingApp.service;
 
-import java.util.Optional;
+//import java.util.Optional;
 
 import org.launchcode.OneThingApp.data.UserRepository;
 import org.launchcode.OneThingApp.models.AuthenticationResponse;
@@ -9,7 +9,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMethod;
+//import org.springframework.web.bind.annotation.RequestMethod;
 
 @Service
 public class AuthenticationService {
