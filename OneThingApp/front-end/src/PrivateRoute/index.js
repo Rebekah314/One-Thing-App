@@ -5,6 +5,8 @@ import { useLocalState } from '../util/useLocalStorage';
 //If the user is authenticated, we want to render the "children".
 //If the user is not authentication, we want to redirect to the Login page.
 
+//This needs to check if the jwt is expired, not just if it's empty
+
 const PrivateRoute = ( { children }) => {
 
     //check if there is a stored jwt value
