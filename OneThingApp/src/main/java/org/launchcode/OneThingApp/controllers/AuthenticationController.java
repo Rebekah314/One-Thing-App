@@ -3,7 +3,9 @@ package org.launchcode.OneThingApp.controllers;
 import org.launchcode.OneThingApp.models.AuthenticationResponse;
 import org.launchcode.OneThingApp.models.User;
 import org.launchcode.OneThingApp.service.AuthenticationService;
+import org.launchcode.OneThingApp.service.JwtService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,9 +18,12 @@ public class AuthenticationController {
 	//this controller will handle login and registration requests
 	
 	private final AuthenticationService authenticationService;
+	
+	private final JwtService jwtService;
 
-	public AuthenticationController(AuthenticationService authenticationService) {
+	public AuthenticationController(AuthenticationService authenticationService, JwtService jwtService) {
 		this.authenticationService = authenticationService;
+		this.jwtService = jwtService;
 	}
 	
 	//right at 58:00 in video
@@ -40,7 +45,10 @@ public class AuthenticationController {
 	
 	//Need end point for front end to check if token is valid 
 	@GetMapping("/validate")
-	public ResponseEntity<AuthenticationResponse> validateJwtToken(@RequestParam String token) {
+	public ResponseEntity<AuthenticationResponse> validateJwtToken(@RequestParam String token, @AuthenticationPrincipal User user) {
+		
+		Boolean validateToken = JwtService.isValid(token, user);
+		
 		return null;
 		
 	}
