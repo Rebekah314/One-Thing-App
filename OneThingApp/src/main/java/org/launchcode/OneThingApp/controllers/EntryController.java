@@ -6,7 +6,7 @@ import java.util.Set;
 import org.launchcode.OneThingApp.models.Entry;
 import org.launchcode.OneThingApp.models.User;
 import org.launchcode.OneThingApp.service.EntryService;
-import org.springframework.data.web.JsonPath;
+//import org.springframework.data.web.JsonPath;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;

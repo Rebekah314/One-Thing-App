@@ -13,7 +13,7 @@ import java.util.function.Function;
 
 import javax.crypto.SecretKey;
 
-import org.aspectj.lang.annotation.Before;
+//import org.aspectj.lang.annotation.Before;
 import org.launchcode.OneThingApp.models.User;
 
 @Service
@@ -56,7 +56,7 @@ public class JwtService {
 				.builder()
 				.subject(user.getUsername())
 				.issuedAt(new Date(System.currentTimeMillis()))
-				.expiration(new Date(System.currentTimeMillis() + 24*60*60*1000))
+				.expiration(new Date(System.currentTimeMillis() + 60*1000))
 				.signWith(getSigninKey())
 				.compact();
 		

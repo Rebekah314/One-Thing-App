@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useLocalState } from '../util/useLocalStorage';
 import { reusableFetch } from '../Services/reusableFetch';
@@ -14,20 +14,27 @@ const PrivateRoute = ( { children }) => {
     //check if there is a stored jwt value
     const [jwt, setJwt] = useLocalState("", "jwt");
 
+    //store isValid and isLoading as states to help with async processes
+    const [isLoading, setIsLoading] = useState(true);
+    const [isValid, setIsValid] = useState(null);
+
     if (jwt) {
         //don't pass in jwt because we don't want it to reject it automatically
-        reusableFetch(`/validate?token=${jwt}`, "GET", null).then((isValid) => {
-            return isValid ? children : <Navigate to="/login" />;
-            
-            
+        reusableFetch(`/validate?token=${jwt}`, "GET", jwt).then((validity) => {
+            setIsValid(validity);
+            setIsLoading(false); 
         });
-
-    
+    } else {
+        return <Navigate to="/login" />;
     }
 
-    
-
-    return <Navigate to="/login" />;
+    return isLoading ? (
+        <div>Loading... </div>
+    ) : isValid === true ? (
+        children
+    ) : (
+      <Navigate to="/login" />
+    );
 };
 
 export default PrivateRoute;
