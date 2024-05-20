@@ -4,8 +4,10 @@ import org.launchcode.OneThingApp.models.AuthenticationResponse;
 import org.launchcode.OneThingApp.models.User;
 import org.launchcode.OneThingApp.service.AuthenticationService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -34,6 +36,13 @@ public class AuthenticationController {
 			@RequestBody User request
 			) {
 		return ResponseEntity.ok(authenticationService.authenticate(request));
+	}
+	
+	//Need end point for front end to check if token is valid 
+	@GetMapping("/validate")
+	public ResponseEntity<AuthenticationResponse> validateJwtToken(@RequestParam String token) {
+		return null;
+		
 	}
 	
 
