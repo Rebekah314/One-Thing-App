@@ -71,5 +71,4 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter{
 	}
 	//Video for this is around 45:00 in https://www.youtube.com/watch?v=RnZmeczS_DI
 	
-	//6 updates are needed to change the color to the next shade of green
 }
