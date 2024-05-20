@@ -45,11 +45,11 @@ public class AuthenticationController {
 	
 	//Need end point for front end to check if token is valid 
 	@GetMapping("/validate")
-	public ResponseEntity<AuthenticationResponse> validateJwtToken(@RequestParam String token, @AuthenticationPrincipal User user) {
+	public ResponseEntity<?> validateJwtToken(@RequestParam String token, @AuthenticationPrincipal User user) {
 		
-		Boolean validateToken = JwtService.isValid(token, user);
+		Boolean isTokenValid = jwtService.isValid(token, user);
 		
-		return null;
+		return ResponseEntity.ok(isTokenValid);
 		
 	}
 	
