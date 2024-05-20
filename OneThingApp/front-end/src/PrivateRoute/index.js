@@ -16,12 +16,18 @@ const PrivateRoute = ( { children }) => {
 
     if (jwt) {
         //don't pass in jwt because we don't want it to reject it automatically
-        reusableFetch(`/validate?token=${jwt}`, "GET", null ).then();
+        reusableFetch(`/validate?token=${jwt}`, "GET", null).then((isValid) => {
+            return isValid ? children : <Navigate to="/login" />;
+            
+            
+        });
+
+    
     }
 
     
 
-    return jwt ? children : <Navigate to="/login" />;
+    return <Navigate to="/login" />;
 };
 
 export default PrivateRoute;
