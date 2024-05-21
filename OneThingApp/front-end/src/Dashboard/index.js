@@ -38,25 +38,24 @@ const Dashboard = () => {
             
             <h3>Priority Prism</h3>
             {entries ? (
-                <Row>
+                <div className="d-grid gap-3" 
+                    style={{gridTemplateColumns: "repeat(auto-fill, 18rem)"}}>
                 {entries.map((entry) => (
-                    <Col>
-                        <Card key={`entryId + ${entry.id}`} style={{ width: '18rem' }}>
-                            <Card.Body>
-                                <Card.Title>Entry #{entry.id}</Card.Title>
-                                <Card.Subtitle className="mb-2 text-muted">{entry.status}</Card.Subtitle>
-                                <Card.Text>
-                                    {entry.content}
-                                </Card.Text>
-                                <Card.Text>
-                                    {entry.date}
-                                </Card.Text>
-                                <Button href={`/entries/${entry.id}`}>Edit</Button>
-                            </Card.Body>
-                        </Card>
-                    </Col>
+                    <Card key={`entryId + ${entry.id}`} style={{ width: '18rem', height: '15rem' }}>
+                        <Card.Body>
+                            <Card.Title>Entry #{entry.id}</Card.Title>
+                            <Card.Subtitle className="mb-2 text-muted">{entry.status}</Card.Subtitle>
+                            <Card.Text>
+                                {entry.content}
+                            </Card.Text>
+                            <Card.Text>
+                                {entry.date}
+                            </Card.Text>
+                            <Button href={`/entries/${entry.id}`}>Edit</Button>
+                        </Card.Body>
+                    </Card>
                 ))}
-                </Row>
+                </div>
             ) : (
                 <></>
             )} 
