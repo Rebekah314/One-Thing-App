@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useLocalState } from '../util/useLocalStorage';
 import { reusableFetch } from '../Services/reusableFetch';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 const EntryView = () => {
 
@@ -11,6 +13,8 @@ const EntryView = () => {
     const [entry, setEntry] = useState(null);
 
     const [jwt, setJwt] = useLocalState("", "jwt");
+
+    const [date, setDate] = useState(new Date())
 
     //track entry fields so that they can be updated
     function updateEntryField(prop, value) {
@@ -39,20 +43,57 @@ const EntryView = () => {
 
     return (
         <div>
+            <Button variant="secondary" className="pull-right" href={"/dashboard"}>Return to Dashboard</Button>
             <h1>Entry {entryId}</h1>
             {entry ? (
             <>
-                <h2>Status: {entry.status}</h2>
+                <h2>Status</h2>
+                <div key="radio_IP" className="mb-3">
+                    <Form.Check 
+                        type={'radio'}
+                        id={"status.IN_PROGRESS"}
+                        label="In Progress"
+                        name="updateStatus"
+                        onClick={() => updateEntryField("status", "IN_PROGRESS")}
+                    />
+                    <Form.Check 
+                        type={'radio'}
+                        id={"status.COMPLETED"}
+                        label="Completed"
+                        name="updateStatus"
+                        onClick={() => updateEntryField("status", "COMPLETED")}
+                    />
+                    <Form.Check 
+                        type={'radio'}
+                        id={"status.PIVOTED"}
+                        label="Pivoted"
+                        name="updateStatus"
+                        onClick={() => updateEntryField("status", "PIVOTED")}
+                    />
+                </div>
                 <h3>Date: {entry.date}</h3>
+                <p>Update date: 
+                    <Form.Control
+                    type="date"
+                    name="datepic"
+                    placeholder="DateRange"
+                    value={entry.date ? entry.date : "Not listed"}
+                    onChange={(event) => {
+                        setDate("date", event.target.value);
+                        updateEntryField("date", event.target.value)}}
+                    />
+              </p>
                 <h3>Content: 
                     <textarea id="content" rows="2" cols="40" 
                         onChange={(event) => updateEntryField("content", event.target.value)}
-                        value={entry.content}
+                        value={entry.content ? entry.content : "Not listed"}
                     ></textarea>
                 </h3>
                 <h3>Author: {entry.author.username}</h3>
                 
-                <button onClick={() => updateEntryRepo()}>Update Entry</button>
+                <Button onClick={() => updateEntryRepo()}
+                    href={"/dashboard"}
+                >Update Entry</Button>
             </>
             ) : (
             <></>
