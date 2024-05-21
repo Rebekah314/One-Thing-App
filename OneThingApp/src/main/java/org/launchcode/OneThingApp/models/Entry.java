@@ -58,8 +58,8 @@ public class Entry {
 		this.content = content;
 	}
 
-	public Status getStatus() {
-		return status;
+	public String getStatus() {
+		return status.label;
 	}
 
 	public void setStatus(Status status) {

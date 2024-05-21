@@ -43,11 +43,12 @@ const Dashboard = () => {
                                 <Card.Title>Entry #{entry.id}</Card.Title>
                                 <Card.Subtitle className="mb-2 text-muted">{entry.status}</Card.Subtitle>
                                 <Card.Text>
-                                    <div>{entry.content}</div>
-                                    <div>{entry.date}</div>
+                                    {entry.content}
+                                </Card.Text>
+                                <Card.Text>
+                                    {entry.date}
                                 </Card.Text>
                                 <Button href={`/entries/${entry.id}`}>Edit</Button>
-                                <Card.Link href="#">Another Link</Card.Link>
                             </Card.Body>
                         </Card>
                     </div>
