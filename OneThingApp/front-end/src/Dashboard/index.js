@@ -4,6 +4,8 @@ import { Link, Navigate } from 'react-router-dom';
 import { reusableFetch } from '../Services/reusableFetch';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 const Dashboard = () => {
 
@@ -36,9 +38,10 @@ const Dashboard = () => {
             
             <h3>Priority Prism</h3>
             {entries ? (
-                entries.map((entry) => (
-                    <div key={`entryId + ${entry.id}`}>
-                        <Card style={{ width: '18rem' }}>
+                <Row>
+                {entries.map((entry) => (
+                    <Col>
+                        <Card key={`entryId + ${entry.id}`} style={{ width: '18rem' }}>
                             <Card.Body>
                                 <Card.Title>Entry #{entry.id}</Card.Title>
                                 <Card.Subtitle className="mb-2 text-muted">{entry.status}</Card.Subtitle>
@@ -51,8 +54,9 @@ const Dashboard = () => {
                                 <Button href={`/entries/${entry.id}`}>Edit</Button>
                             </Card.Body>
                         </Card>
-                    </div>
-                ))
+                    </Col>
+                ))}
+                </Row>
             ) : (
                 <></>
             )} 
