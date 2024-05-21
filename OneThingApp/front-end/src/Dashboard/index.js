@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLocalState } from '../util/useLocalStorage';
 import { Link } from 'react-router-dom';
 import { reusableFetch } from '../Services/reusableFetch';
+import Card from 'react-bootstrap/Card';
 
 const Dashboard = () => {
 
@@ -39,7 +40,19 @@ const Dashboard = () => {
             <h3>Priority Prism</h3>
             {entries ? (
                 entries.map((entry) => (
-                    <div key={`entryId + ${entry.id}`}><Link to={`/entries/${entry.id}`}>Entry ID: {entry.id}</Link></div>
+                    <div key={`entryId + ${entry.id}`}>
+                        <Card style={{ width: '18rem' }}>
+                            <Card.Body>
+                                <Card.Title>Entry #{entry.id}</Card.Title>
+                                <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
+                                <Card.Text>
+                                    {entry.content}
+                                </Card.Text>
+                                <Card.Link href="#">Card Link</Card.Link>
+                                <Card.Link href="#">Another Link</Card.Link>
+                            </Card.Body>
+                        </Card>
+                    </div>
                 ))
             ) : (
                 <></>
