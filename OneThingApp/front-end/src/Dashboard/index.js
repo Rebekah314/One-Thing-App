@@ -29,7 +29,7 @@ const Dashboard = () => {
             <h1>Welcome back!</h1>
             <h3>What's the ONE thing YOU can do today that will make everything else easier or unnecessary?</h3>
 
-            <textarea id="oneThing" name="oneThing" rows="4" cols="50">
+            <textarea id="oneThing" name="oneThing" rows="2" cols="40">
             </textarea>
             
             <button onClick={() => createEntry()}>Save Entry: my ONE thing today</button>
