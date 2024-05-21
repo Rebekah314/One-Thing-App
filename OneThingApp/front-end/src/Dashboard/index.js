@@ -32,7 +32,7 @@ const Dashboard = () => {
         <div style={{margin: "2em"}}>
             <h3>What's the ONE thing YOU can do today that will make everything else easier or unnecessary?</h3>
             
-            <button onClick={() => createEntry()}>Create Entry: my ONE thing today</button>
+            <Button size="lg"onClick={() => createEntry()}>Create Entry: my ONE thing today</Button>
             
             <hr />
             
@@ -42,7 +42,7 @@ const Dashboard = () => {
                     style={{gridTemplateColumns: "repeat(auto-fill, 18rem)"}}>
                 {entries.map((entry) => (
                     <Card key={`entryId + ${entry.id}`} style={{ width: '18rem', height: '15rem' }}>
-                        <Card.Body>
+                        <Card.Body className="d-flex flex-column justify-content-around">
                             <Card.Title>Entry #{entry.id}</Card.Title>
                             <Card.Subtitle className="mb-2 text-muted">{entry.status}</Card.Subtitle>
                             <Card.Text>
@@ -51,7 +51,7 @@ const Dashboard = () => {
                             <Card.Text>
                                 {entry.date}
                             </Card.Text>
-                            <Button href={`/entries/${entry.id}`}>Edit</Button>
+                            <Button variant="secondary" href={`/entries/${entry.id}`}>Edit</Button>
                         </Card.Body>
                     </Card>
                 ))}
