@@ -45,7 +45,7 @@ const EntryView = () => {
                 <h2>Status: {entry.status}</h2>
                 <h3>Date: {entry.date}</h3>
                 <h3>Content: 
-                    <textarea id="content" rows="4" cols="50" 
+                    <textarea id="content" rows="2" cols="40" 
                         onChange={(event) => updateEntryField("content", event.target.value)}
                         value={entry.content}
                     ></textarea>

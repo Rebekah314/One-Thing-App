@@ -1,5 +1,6 @@
 package org.launchcode.OneThingApp.service;
 
+import java.time.LocalDate;
 import java.util.Optional;
 import java.util.Set;
 
@@ -9,6 +10,8 @@ import org.launchcode.OneThingApp.models.Status;
 import org.launchcode.OneThingApp.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 
 
 @Service
@@ -30,6 +33,9 @@ public class EntryService {
 		
 		//initialize content with empty string
 		entry.setContent("");
+		
+		//initialize date with current date
+		entry.setDate(LocalDate.now());
 		
 		//store entry in repository, and return entry
 		return entryRepository.save(entry);

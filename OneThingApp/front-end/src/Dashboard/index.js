@@ -27,13 +27,9 @@ const Dashboard = () => {
 
     return (
         <div style={{margin: "2em"}}>
-            <h1>Welcome back!</h1>
             <h3>What's the ONE thing YOU can do today that will make everything else easier or unnecessary?</h3>
-
-            <textarea id="oneThing" name="oneThing" rows="2" cols="40">
-            </textarea>
             
-            <button onClick={() => createEntry()}>Save Entry: my ONE thing today</button>
+            <button onClick={() => createEntry()}>Create Entry: my ONE thing today</button>
             
             <hr />
             
@@ -44,9 +40,10 @@ const Dashboard = () => {
                         <Card style={{ width: '18rem' }}>
                             <Card.Body>
                                 <Card.Title>Entry #{entry.id}</Card.Title>
-                                <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
+                                <Card.Subtitle className="mb-2 text-muted">{entry.status}</Card.Subtitle>
                                 <Card.Text>
-                                    {entry.content}
+                                    <p>{entry.content}</p>
+                                    <p>{entry.date}</p>
                                 </Card.Text>
                                 <Card.Link href="#">Card Link</Card.Link>
                                 <Card.Link href="#">Another Link</Card.Link>
