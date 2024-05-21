@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useLocalState } from '../util/useLocalStorage';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { reusableFetch } from '../Services/reusableFetch';
 import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 
 const Dashboard = () => {
 
@@ -42,10 +43,10 @@ const Dashboard = () => {
                                 <Card.Title>Entry #{entry.id}</Card.Title>
                                 <Card.Subtitle className="mb-2 text-muted">{entry.status}</Card.Subtitle>
                                 <Card.Text>
-                                    <p>{entry.content}</p>
-                                    <p>{entry.date}</p>
+                                    <div>{entry.content}</div>
+                                    <div>{entry.date}</div>
                                 </Card.Text>
-                                <Card.Link href="#">Card Link</Card.Link>
+                                <Button href={`/entries/${entry.id}`}>Edit</Button>
                                 <Card.Link href="#">Another Link</Card.Link>
                             </Card.Body>
                         </Card>
