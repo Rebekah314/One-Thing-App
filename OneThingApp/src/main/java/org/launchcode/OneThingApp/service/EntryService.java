@@ -55,5 +55,10 @@ public class EntryService {
 		return entryRepository.save(entry);
 		
 	}
+	
+	//adding this method to practice writing tests
+	public Float simpleCalculator(Float a, Float b) {
+		return a + b;
+	}
 
 }
