@@ -20,16 +20,16 @@ const EntryView = () => {
     function updateEntryField(prop, value) {
         const newEntry = {...entry};
         newEntry[prop] = value;
+        console.log(prop + ": " + value);
         setEntry(newEntry);
     }
 
+    //when "submit" button is clicked, update database with updates
     function updateEntryRepo() {
         reusableFetch(`/entries/${entryId}`, "PUT", jwt, entry).then(entryData => {
             setEntry(entryData);
         });
     };
-
-    //when "submit" button is clicked, update database with updates
 
 
     useEffect(() => {
@@ -86,7 +86,7 @@ const EntryView = () => {
                 <h3>Content: 
                     <textarea id="content" rows="2" cols="40" 
                         onChange={(event) => updateEntryField("content", event.target.value)}
-                        value={entry.content ? entry.content : "Not listed"}
+                        value={entry.content ? entry.content : "Type your ONE thing today"}
                     ></textarea>
                 </h3>
                 <h3>Author: {entry.author.username}</h3>
