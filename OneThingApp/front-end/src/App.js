@@ -5,6 +5,7 @@ import {  Routes, Route} from "react-router-dom";
 import Dashboard from './Dashboard';
 import Homepage from './Homepage';
 import Login from './Login';
+import Register from './Register';
 import PrivateRoute from './PrivateRoute';
 import EntryView from './EntryView';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -79,6 +80,8 @@ const [jwt, setJwt] = useLocalState("", "jwt");
         />
 
         <Route path="/login" element={ <Login />} />
+
+        <Route path="/register" element={ <Register />} />
 
         <Route path="/" element={ <Homepage />} />
 
