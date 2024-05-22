@@ -11,9 +11,6 @@ import org.launchcode.OneThingApp.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
-
-
 @Service
 public class EntryService {
 	
