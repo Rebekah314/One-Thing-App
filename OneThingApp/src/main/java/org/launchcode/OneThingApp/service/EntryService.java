@@ -57,8 +57,8 @@ public class EntryService {
 	}
 	
 	//adding this method to practice writing tests
-	public Float simpleCalculator(Float a, Float b) {
-		return a + b;
+	public int simpleCalculator(int i, int j) {
+		return i + j;
 	}
 
 }
