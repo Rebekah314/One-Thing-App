@@ -29,7 +29,7 @@ public class EntryService {
 		entry.setAuthor(user);
 		
 		//initialize content with empty string
-		entry.setContent("");
+		entry.setContent("Add content");
 		
 		//initialize date with current date
 		entry.setDate(LocalDate.now());

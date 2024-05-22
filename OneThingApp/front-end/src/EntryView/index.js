@@ -3,6 +3,7 @@ import { useLocalState } from '../util/useLocalStorage';
 import { reusableFetch } from '../Services/reusableFetch';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
 
 const EntryView = () => {
 
@@ -14,7 +15,8 @@ const EntryView = () => {
 
     const [jwt, setJwt] = useLocalState("", "jwt");
 
-    const [date, setDate] = useState(new Date())
+    const [date, setDate] = useState(new Date());
+
 
     //track entry fields so that they can be updated
     function updateEntryField(prop, value) {
@@ -26,9 +28,12 @@ const EntryView = () => {
 
     //when "submit" button is clicked, update database with updates
     function updateEntryRepo() {
-        reusableFetch(`/entries/${entryId}`, "PUT", jwt, entry).then(entryData => {
+        console.log("BEFORE");
+        console.log(entry);
+        reusableFetch(`/entries/${entryId}`, "PATCH", jwt, entry).then(entryData => {
             setEntry(entryData);
         });
+        
     };
 
 
@@ -37,12 +42,13 @@ const EntryView = () => {
             setEntry(entryData);
         });
     }, []);
+    
 
     //TO DO: entry fields should only be able to be updated 
     //by the author, and maybe the accountability friend
 
     return (
-        <div>
+        <Container>
             <Button variant="secondary" className="pull-right" href={"/dashboard"}>Return to Dashboard</Button>
             <h1>Entry {entryId}</h1>
             {entry ? (
@@ -54,21 +60,23 @@ const EntryView = () => {
                         id={"status.IN_PROGRESS"}
                         label="In Progress"
                         name="updateStatus"
-                        onClick={() => updateEntryField("status", "IN_PROGRESS")}
-                    />
+                        checked={entry.status === "IN_PROGRESS"}
+                        onChange={() => updateEntryField("status", "IN_PROGRESS")} />
                     <Form.Check 
                         type={'radio'}
                         id={"status.COMPLETED"}
                         label="Completed"
                         name="updateStatus"
-                        onClick={() => updateEntryField("status", "COMPLETED")}
+                        checked={entry.status === "COMPLETED"}
+                        onChange={() => updateEntryField("status", "COMPLETED")}
                     />
                     <Form.Check 
                         type={'radio'}
                         id={"status.PIVOTED"}
                         label="Pivoted"
                         name="updateStatus"
-                        onClick={() => updateEntryField("status", "PIVOTED")}
+                        checked={entry.status === "PIVOTED"}
+                        onChange={() => updateEntryField("status", "PIVOTED")}
                     />
                 </div>
                 <h3>Date: {entry.date}</h3>
@@ -98,7 +106,7 @@ const EntryView = () => {
             ) : (
             <></>
             )}
-        </div>
+        </Container>
     );
 };
 
