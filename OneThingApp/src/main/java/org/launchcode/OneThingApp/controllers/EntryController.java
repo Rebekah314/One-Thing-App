@@ -53,7 +53,7 @@ public class EntryController {
 		return ResponseEntity.ok(entryOptional.orElse(new Entry()));
 	}
 	
-	@PatchMapping("{entryId}")
+	@PostMapping("{entryId}")
 	public ResponseEntity<?> updateEntryById(@PathVariable long entryId, 
 			@RequestBody Entry entry,
 			@AuthenticationPrincipal User user) {

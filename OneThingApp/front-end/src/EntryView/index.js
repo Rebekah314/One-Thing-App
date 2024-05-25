@@ -30,7 +30,8 @@ const EntryView = () => {
     function updateEntryRepo() {
         console.log("BEFORE");
         console.log(entry);
-        reusableFetch(`/entries/${entryId}`, "PATCH", jwt, entry).then(entryData => {
+        console.log(entry.author);
+        reusableFetch(`/entries/${entryId}`, "POST", jwt, entry).then(entryData => {
             setEntry(entryData);
         });
         
@@ -53,7 +54,7 @@ const EntryView = () => {
             <h1>Entry {entryId}</h1>
             {entry ? (
             <>
-                <h2>Status</h2>
+                <h2>Current Status: {entry.status}</h2>
                 <div key="radio_IP" className="mb-3">
                     <Form.Check 
                         type={'radio'}
@@ -100,7 +101,7 @@ const EntryView = () => {
                 <h3>Author: {entry.author.username}</h3>
                 
                 <Button onClick={() => updateEntryRepo()}
-                    href={"/dashboard"}
+                    href={`/entries/${entryId}`}
                 >Update Entry</Button>
             </>
             ) : (

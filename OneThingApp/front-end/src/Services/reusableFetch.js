@@ -17,7 +17,9 @@ function reusableFetch(url, requestMethod, jwt, requestBody) {
     return fetch(url, fetchData).then(response => {
         if (response.status === 200) return response.json();
 
-        //else (response.status === 401) ... custom error handling opportunities here
+        // else {
+        //     console.log(response.status);
+        // };
 
     }); 
 }
