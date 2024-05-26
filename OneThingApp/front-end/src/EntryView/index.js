@@ -7,6 +7,9 @@ import Container from 'react-bootstrap/Container';
 
 const EntryView = () => {
 
+    //I think I need to completely redo this page. Start from scratch to see where errors arise.
+    //Or, better yet, rename this page so I don't lose the work, then create a brand new EntryView index.js
+
     //TO DO: get access to id in a better way. For now, pull from url
     const entryId = window.location.href.split("/entries/")[1];
 
