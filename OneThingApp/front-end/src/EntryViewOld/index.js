@@ -7,12 +7,19 @@ import Container from 'react-bootstrap/Container';
 
 const EntryView = () => {
 
-    ///TO DO: get access to id in a better way. For now, pull from url
+    //I think I need to completely redo this page. Start from scratch to see where errors arise.
+    //Or, better yet, rename this page so I don't lose the work, then create a brand new EntryView index.js
+
+    //TO DO: get access to id in a better way. For now, pull from url
     const entryId = window.location.href.split("/entries/")[1];
 
+    //initialize entry with content = empty string
     const [entry, setEntry] = useState(null);
+
     const [jwt, setJwt] = useLocalState("", "jwt");
+
     const [date, setDate] = useState(new Date());
+
 
     //track entry fields so that they can be updated
     function updateEntryField(prop, value) {
@@ -24,25 +31,29 @@ const EntryView = () => {
 
     //when "submit" button is clicked, update database with updates
     function updateEntryRepo() {
+        console.log("BEFORE");
+        console.log(entry);
+        console.log(entry.author);
         reusableFetch(`/entries/${entryId}`, "POST", jwt, entry).then(entryData => {
             setEntry(entryData);
         });
+        
     };
 
-    //this will run once upon page load, because the tailing array is empty
+
     useEffect(() => {
         reusableFetch(`/entries/${entryId}`, "GET", jwt).then(entryData => {
             setEntry(entryData);
         });
     }, []);
     
-    //TO DO: entry fields should only be able to be updated by the author, and maybe the accountability friend
+
+    //TO DO: entry fields should only be able to be updated 
+    //by the author, and maybe the accountability friend
 
     return (
         <Container>
-            <div >
-                <Button className="float-end" size="lg" variant="secondary"  href={"/dashboard"}>Return to Dashboard</Button>
-            </div>
+            <Button variant="secondary" className="pull-right" href={"/dashboard"}>Return to Dashboard</Button>
             <h1>Entry {entryId}</h1>
             {entry ? (
             <>
