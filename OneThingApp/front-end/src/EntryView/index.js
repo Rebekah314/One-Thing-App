@@ -24,6 +24,7 @@ const EntryView = () => {
 
     //when "submit" button is clicked, update database with updates
     function updateEntryRepo() {
+        console.log(entry);
         reusableFetch(`/entries/${entryId}`, "POST", jwt, entry).then(entryData => {
             setEntry(entryData);
         });
@@ -47,31 +48,13 @@ const EntryView = () => {
             {entry ? (
             <>
                 <h2>Current Status: {entry.status}</h2>
-                <div key="radio_IP" className="mb-3">
-                    <Form.Check 
-                        type={'radio'}
-                        id={"status.IN_PROGRESS"}
-                        label="In Progress"
-                        name="updateStatus"
-                        checked={entry.status === "IN_PROGRESS"}
-                        onChange={() => updateEntryField("status", "IN_PROGRESS")} />
-                    <Form.Check 
-                        type={'radio'}
-                        id={"status.COMPLETED"}
-                        label="Completed"
-                        name="updateStatus"
-                        checked={entry.status === "COMPLETED"}
-                        onChange={() => updateEntryField("status", "COMPLETED")}
-                    />
-                    <Form.Check 
-                        type={'radio'}
-                        id={"status.PIVOTED"}
-                        label="Pivoted"
-                        name="updateStatus"
-                        checked={entry.status === "PIVOTED"}
-                        onChange={() => updateEntryField("status", "PIVOTED")}
-                    />
-                </div>
+                <Form.Select aria-label="updateStatus" onChange={(event) => updateEntryField("status", event.target.value)}>
+                    <option>Update Status</option>
+                    <option value="IN_PROCESS">In Process</option>
+                    <option value="COMPLETED">Completed</option>
+                    <option value="PIVOTED">Pivoted</option>
+                </Form.Select>
+                
                 <h3>Date: {entry.date}</h3>
                 <p>Update date: 
                     <Form.Control
