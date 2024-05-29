@@ -23,6 +23,7 @@ const EntryView = () => {
     }
 
     //when "submit" button is clicked, update database with updates
+    //TO DO: Test this fetch call with PostMan
     function updateEntryRepo() {
         console.log(entry);
         reusableFetch(`/entries/${entryId}`, "POST", jwt, entry).then(entryData => {
