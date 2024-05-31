@@ -23,11 +23,12 @@ const EntryView = () => {
     }
 
     //when "submit" button is clicked, update database with updates
-    //TO DO: Test this fetch call with PostMan
+    //Fetch call tested with Postman, and seems to work every time
     function updateEntryRepo() {
         console.log(entry);
         reusableFetch(`/entries/${entryId}`, "POST", jwt, entry).then(entryData => {
             setEntry(entryData);
+            console.log(entryData);
         });
     };
 
@@ -36,7 +37,7 @@ const EntryView = () => {
         reusableFetch(`/entries/${entryId}`, "GET", jwt).then(entryData => {
             setEntry(entryData);
         });
-    }, []);
+    }, []);  
     
     //TO DO: entry fields should only be able to be updated by the author, and maybe the accountability friend
 
