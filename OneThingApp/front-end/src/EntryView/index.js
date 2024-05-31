@@ -42,15 +42,16 @@ const EntryView = () => {
     //TO DO: entry fields should only be able to be updated by the author, and maybe the accountability friend
 
     return (
-        <Container>
+        <>
             <div >
                 <Button className="float-end" size="lg" variant="secondary"  href={"/dashboard"}>Return to Dashboard</Button>
             </div>
             <h1>Entry {entryId}</h1>
             {entry ? (
-            <>
+            <Container>
+                <form>
                 <h2>Current Status: {entry.status}</h2>
-                <Form.Select aria-label="updateStatus" onChange={(event) => updateEntryField("status", event.target.value)}>
+                <Form.Select id="statusUpdate" aria-label="updateStatus" onChange={(event) => updateEntryField("status", event.target.value)}>
                     <option>Update Status</option>
                     <option value="IN_PROCESS">In Process</option>
                     <option value="COMPLETED">Completed</option>
@@ -76,15 +77,16 @@ const EntryView = () => {
                     ></textarea>
                 </h3>
                 <h3>Author: {entry.author.username}</h3>
+                </form>
                 
                 <Button onClick={() => updateEntryRepo()}
                     href={`/entries/${entryId}`}
                 >Update Entry</Button>
-            </>
+            </Container>
             ) : (
             <></>
             )}
-        </Container>
+        </>
     );
 };
 
