@@ -23,6 +23,11 @@ const EntryView = () => {
         setEntry(newEntry);
     }
 
+    //check entry status before updating database
+    function checkStatus() {
+        
+    }
+
     //when "submit" button is clicked, update database with updates
     //Fetch call tested with Postman, and seems to work every time
     function updateEntryRepo() {
@@ -82,7 +87,8 @@ const EntryView = () => {
                 
                 <Button 
                     type="submit"
-                    onClick={() => updateEntryRepo()}
+                    onClick={() => {
+                        updateEntryRepo()}}
                     //href={`/entries/${entryId}`}
                 >Update Entry</Button>
             </Container>
