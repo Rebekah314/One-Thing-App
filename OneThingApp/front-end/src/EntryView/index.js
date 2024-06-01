@@ -13,6 +13,7 @@ const EntryView = () => {
     const [entry, setEntry] = useState(null);
     const [jwt, setJwt] = useLocalState("", "jwt");
     const [date, setDate] = useState(new Date());
+    const [entryUpdated, setEntryUpdated] = useState(false);
 
     //track entry fields so that they can be updated
     function updateEntryField(prop, value) {
@@ -28,7 +29,7 @@ const EntryView = () => {
         console.log(entry);
         reusableFetch(`/entries/${entryId}`, "POST", jwt, entry).then(entryData => {
             setEntry(entryData);
-            console.log(entryData);
+            setEntryUpdated(true);
         });
     };
 
@@ -37,7 +38,7 @@ const EntryView = () => {
         reusableFetch(`/entries/${entryId}`, "GET", jwt).then(entryData => {
             setEntry(entryData);
         });
-    }, []);  
+    }, [entryUpdated]);  
     
     //TO DO: entry fields should only be able to be updated by the author, and maybe the accountability friend
 
@@ -53,7 +54,7 @@ const EntryView = () => {
                 <h2>Current Status: {entry.status}</h2>
                 <Form.Select id="statusUpdate" aria-label="updateStatus" onChange={(event) => updateEntryField("status", event.target.value)}>
                     <option>Update Status</option>
-                    <option value="IN_PROCESS">In Process</option>
+                    <option value="IN_PROGRESS">In Progress</option>
                     <option value="COMPLETED">Completed</option>
                     <option value="PIVOTED">Pivoted</option>
                 </Form.Select>
@@ -79,8 +80,10 @@ const EntryView = () => {
                 <h3>Author: {entry.author.username}</h3>
                 </form>
                 
-                <Button onClick={() => updateEntryRepo()}
-                    href={`/entries/${entryId}`}
+                <Button 
+                    type="submit"
+                    onClick={() => updateEntryRepo()}
+                    //href={`/entries/${entryId}`}
                 >Update Entry</Button>
             </Container>
             ) : (
