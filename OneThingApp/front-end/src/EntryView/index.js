@@ -53,7 +53,7 @@ const EntryView = () => {
                 <form>
                 <h2>Current Status: {entry.status}</h2>
                 <Form.Select id="statusUpdate" aria-label="updateStatus" onChange={(event) => updateEntryField("status", event.target.value)}>
-                    <option value="0" >Update Status</option>
+                    <option value="" >Update Status</option>
                     <option value="IN_PROGRESS">In Progress</option>
                     <option value="COMPLETED">Completed</option>
                     <option value="PIVOTED">Pivoted</option>

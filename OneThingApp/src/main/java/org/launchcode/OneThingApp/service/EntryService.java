@@ -52,8 +52,8 @@ public class EntryService {
 
 	//pass in an entry to update the fields of that entry
 	public Entry save(Entry entry) {
-		return entryRepository.save(entry);
 		
+		return entryRepository.save(entry);
 	}
 	
 	//adding this method to practice writing tests
