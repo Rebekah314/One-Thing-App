@@ -34,7 +34,7 @@ const EntryView = () => {
         } else if (checkEntry["status"] === "Completed") {
             checkEntry["status"] = "COMPLETED";
             console.log(checkEntry["status"]);
-        } else {
+        } else if (checkEntry["status"] === "Pivoted") {
             checkEntry["status"] = "PIVOTED";
             console.log(checkEntry["status"]);
         }
