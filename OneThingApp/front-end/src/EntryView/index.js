@@ -14,7 +14,7 @@ const EntryView = () => {
     const [jwt, setJwt] = useLocalState("", "jwt");
     const [date, setDate] = useState(new Date());
     const [entryUpdated, setEntryUpdated] = useState(false);
-    const [status, setStatus] = useState(null);
+    const [statusChecked, setStatusChecked] = useState(null);
 
     //track entry fields so that they can be updated
     function updateEntryField(prop, value) {
@@ -47,13 +47,14 @@ const EntryView = () => {
     //Fetch call tested with Postman, and seems to work every time
     function updateEntryRepo() {
         checkStatus();
+        
         reusableFetch(`/entries/${entryId}`, "POST", jwt, entry).then(entryData => {
             setEntry(entryData);
             setEntryUpdated(true);
         });
     };
 
-    //this will run once upon page load, because the tailing array is empty
+    //this will run once upon page load, and again any time the value in entryUpdated changes
     useEffect(() => {
         reusableFetch(`/entries/${entryId}`, "GET", jwt).then(entryData => {
             setEntry(entryData);
