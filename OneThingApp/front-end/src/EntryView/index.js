@@ -14,7 +14,7 @@ const EntryView = () => {
     const [jwt, setJwt] = useLocalState("", "jwt");
     const [date, setDate] = useState(new Date());
     const [entryUpdated, setEntryUpdated] = useState(false);
-    const [statusChecked, setStatusChecked] = useState(null);
+    const [statusChecked, setStatusChecked] = useState(false);
 
     //track entry fields so that they can be updated
     function updateEntryField(prop, value) {
@@ -24,34 +24,15 @@ const EntryView = () => {
         setEntry(newEntry);
     }
 
-    //check entry status before updating database
-    function checkStatus() {
-        const checkEntry = {...entry};
-        console.log(typeof checkEntry["status"]);
-        if (checkEntry["status"] === "In Progress") {
-            checkEntry["status"] = "IN_PROGRESS";
-            console.log(checkEntry["status"]);
-        } else if (checkEntry["status"] === "Completed") {
-            checkEntry["status"] = "COMPLETED";
-            console.log(checkEntry["status"]);
-        } else if (checkEntry["status"] === "Pivoted") {
-            checkEntry["status"] = "PIVOTED";
-            console.log(checkEntry["status"]);
-        }
-        console.log("checkEntry:", checkEntry);
-        setEntry(checkEntry);
-        console.log("entry:", entry);
-    }
+
 
     //when "submit" button is clicked, update database with updates
-    //Fetch call tested with Postman, and seems to work every time
     function updateEntryRepo() {
-        checkStatus();
-        
         reusableFetch(`/entries/${entryId}`, "POST", jwt, entry).then(entryData => {
             setEntry(entryData);
             setEntryUpdated(true);
         });
+        console.log("database updated");
     };
 
     //this will run once upon page load, and again any time the value in entryUpdated changes
@@ -105,7 +86,6 @@ const EntryView = () => {
                     type="submit"
                     onClick={() => {
                         updateEntryRepo()}}
-                    //href={`/entries/${entryId}`}
                 >Update Entry</Button>
             </Container>
             ) : (
