@@ -24,8 +24,6 @@ const EntryView = () => {
         setEntry(newEntry);
     }
 
-
-
     //when "submit" button is clicked, update database with updates
     function updateEntryRepo() {
         reusableFetch(`/entries/${entryId}`, "POST", jwt, entry).then(entryData => {
