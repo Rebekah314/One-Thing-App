@@ -11,6 +11,7 @@ const EntryView = () => {
     const entryId = window.location.href.split("/entries/")[1];
 
     const [entry, setEntry] = useState(null);
+    const [tempEntry, setTempEntry] = useState(null);
     const [jwt, setJwt] = useLocalState("", "jwt");
     const [date, setDate] = useState(new Date());
     const [entryUpdated, setEntryUpdated] = useState(false);
@@ -18,25 +19,26 @@ const EntryView = () => {
 
     //track entry fields so that they can be updated
     function updateEntryField(prop, value) {
-        const newEntry = {...entry};
+        const newEntry = {...tempEntry};
         newEntry[prop] = value;
         console.log(prop + ": " + value);
-        setEntry(newEntry);
+        setTempEntry(newEntry);
     }
 
     //when "submit" button is clicked, update database with updates
     function updateEntryRepo() {
-        reusableFetch(`/entries/${entryId}`, "POST", jwt, entry).then(entryData => {
+        reusableFetch(`/entries/${entryId}`, "POST", jwt, tempEntry).then(entryData => {
             setEntry(entryData);
             setEntryUpdated(true);
         });
-        console.log("database updated");
+        alert("database updated");
     };
 
     //this will run once upon page load, and again any time the value in entryUpdated changes
     useEffect(() => {
         reusableFetch(`/entries/${entryId}`, "GET", jwt).then(entryData => {
             setEntry(entryData);
+            setTempEntry(entryData);
         });
     }, [entryUpdated]);  
     
@@ -84,6 +86,7 @@ const EntryView = () => {
                     type="submit"
                     onClick={() => {
                         updateEntryRepo()}}
+                        
                 >Update Entry</Button>
             </Container>
             ) : (
