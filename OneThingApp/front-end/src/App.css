@@ -8,7 +8,7 @@ body {
 
 /* this paragraph stying forces text to wrap */
 p {
-    word-break: break-all;
+    word-break: break-word;
     white-space: normal;
 }
 
