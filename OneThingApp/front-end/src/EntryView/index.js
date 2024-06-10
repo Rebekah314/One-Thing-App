@@ -42,6 +42,12 @@ const EntryView = () => {
         alert("database updated");
     };
 
+    //when "delete" button clicked, delete entry from repo
+    function deleteEntry() {
+        reusableFetch(`/entries/${entryId}`, "DELETE", jwt).then(() => 
+        window.location.href = "/dashboard");
+    }
+
  
     
     //TO DO: entry fields should only be able to be updated by the author, and maybe the accountability friend
@@ -90,6 +96,16 @@ const EntryView = () => {
                         updateEntryRepo()}}
                         
                 >Update Entry</Button>
+
+                <Button 
+                    type="submit"
+                    variant="danger"
+                    onClick={() => {
+                        
+                        deleteEntry()}}
+                        
+                >Delete Entry</Button>
+
             </Container>
             ) : (
             <></>
