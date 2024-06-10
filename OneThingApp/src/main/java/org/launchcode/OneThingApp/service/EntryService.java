@@ -61,4 +61,9 @@ public class EntryService {
 		return i + j;
 	}
 
+	public Optional<Entry> deleteById(long entryId) {
+		entryRepository.deleteById(entryId);
+		return null;
+	}
+
 }

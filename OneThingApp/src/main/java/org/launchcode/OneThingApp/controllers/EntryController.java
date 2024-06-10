@@ -9,6 +9,7 @@ import org.launchcode.OneThingApp.service.EntryService;
 //import org.springframework.data.web.JsonPath;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 //import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -60,5 +61,11 @@ public class EntryController {
 		//Entry updatedEntry = JSON.parse(jsonStringifiedEntry);
 		Entry updatedEntry = entryService.save(entry);
 		return ResponseEntity.ok(updatedEntry);
+	}
+	
+	@DeleteMapping("{entryId}")
+	public ResponseEntity<?> deleteEntryById(@PathVariable long entryId, @AuthenticationPrincipal User user){
+		Optional<Entry> entryOptional = entryService.deleteById(entryId);
+		return ResponseEntity.ok(entryOptional.orElse(new Entry()));
 	}
 }
