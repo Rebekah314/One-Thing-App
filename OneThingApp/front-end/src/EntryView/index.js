@@ -17,6 +17,14 @@ const EntryView = () => {
     const [entryUpdated, setEntryUpdated] = useState(false);
     const [statusChecked, setStatusChecked] = useState(false);
 
+    //this will run once upon page load, and again any time the value in entryUpdated changes
+    useEffect(() => {
+        reusableFetch(`/entries/${entryId}`, "GET", jwt).then(entryData => {
+            setEntry(entryData);
+            setTempEntry(entryData);
+        });
+    }, [entryUpdated]); 
+
     //track entry fields so that they can be updated
     function updateEntryField(prop, value) {
         const newEntry = {...tempEntry};
@@ -34,13 +42,7 @@ const EntryView = () => {
         alert("database updated");
     };
 
-    //this will run once upon page load, and again any time the value in entryUpdated changes
-    useEffect(() => {
-        reusableFetch(`/entries/${entryId}`, "GET", jwt).then(entryData => {
-            setEntry(entryData);
-            setTempEntry(entryData);
-        });
-    }, [entryUpdated]);  
+ 
     
     //TO DO: entry fields should only be able to be updated by the author, and maybe the accountability friend
 
@@ -67,7 +69,7 @@ const EntryView = () => {
                     type="date"
                     name="datepic"
                     placeholder="DateRange"
-                    value={entry.date ? entry.date : "Not listed"}
+                    value={tempEntry.date ? tempEntry.date : "Not listed"}
                     onChange={(event) => {
                         setDate("date", event.target.value);
                         updateEntryField("date", event.target.value)}}
@@ -76,7 +78,7 @@ const EntryView = () => {
                 <h3>Content: 
                     <textarea id="content" rows="2" cols="40" 
                         onChange={(event) => updateEntryField("content", event.target.value)}
-                        value={entry.content ? entry.content : "Type your ONE thing today"}
+                        value={tempEntry.content ? tempEntry.content : "Type your ONE thing today"}
                     ></textarea>
                 </h3>
                 <h3>Author: {entry.author.username}</h3>
