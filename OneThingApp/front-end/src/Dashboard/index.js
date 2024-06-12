@@ -20,6 +20,8 @@ const Dashboard = () => {
         reusableFetch("entries", "GET", jwt).then((entriesData) => {
             setEntries(entriesData);
         });
+        console.log(entries);
+
     }, []);
     
     function createEntry() {
@@ -37,9 +39,10 @@ const Dashboard = () => {
             <hr />
             
             <h3>Priority Prism</h3>
-            {entries ? (
+            {entries !== [] ? (
                 <div className="d-grid gap-3" 
                     style={{gridTemplateColumns: "repeat(auto-fill, 18rem)"}}>
+                    
                 {entries.map((entry) => (
                     <Card key={`entryId + ${entry.id}`} style={{ width: '18rem', height: '15rem' }}>
                         <Card.Body className="d-flex flex-column justify-content-around">
@@ -57,7 +60,11 @@ const Dashboard = () => {
                 ))}
                 </div>
             ) : (
-                <>The best time to plant a tree is 20 years ago. The second best time is today. Let's get started.</>
+                <>
+                    <p>
+                        “The best time to plant a tree was 20 years ago. The second best time is now.” Roberto Maugeri-de Graaff.
+                    </p>
+                </>
             )} 
 
         </div>
