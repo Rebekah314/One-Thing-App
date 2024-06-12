@@ -39,7 +39,7 @@ const Dashboard = () => {
             <hr />
             
             <h3>Priority Prism</h3>
-            {entries !== [] ? (
+            {entries ? (
                 <div className="d-grid gap-3" 
                     style={{gridTemplateColumns: "repeat(auto-fill, 18rem)"}}>
                     

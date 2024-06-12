@@ -40,7 +40,9 @@ public class EntryService {
 	}
 	
 	public Set<Entry> findByAuthor (User user){
-		return entryRepository.findByAuthor(user);
+		Set<Entry> entriesByAuthor = entryRepository.findByAuthor(user);
+		
+		return entriesByAuthor;
 		//we don't want to wire the repository into the controller
 		//repositories should be wired into services, and then services get wired into controllers
 	}
