@@ -30,8 +30,17 @@ const Dashboard = () => {
         });
     }
 
+    function processLogout() {
+        setJwt(null);
+    }
+
     return (
         <div style={{margin: "2em"}}>
+            <div >
+                <Button className="float-end" size="lg" variant="secondary"  href={"/login"}
+                    onClick={() => processLogout()}
+                >Logout</Button>
+            </div>
             <h3>What's the ONE thing YOU can do today that will make everything else easier or unnecessary?</h3>
             
             <Button size="lg"onClick={() => createEntry()}>Create Entry: my ONE thing today</Button>
