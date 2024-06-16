@@ -31,7 +31,7 @@ const Dashboard = () => {
     }
 
     function processLogout() {
-        setJwt(null);
+        localStorage.removeItem("jwt");
     }
 
     return (
