@@ -57,7 +57,8 @@ const EntryView = () => {
             <div >
                 <Button className="float-end" size="lg" variant="secondary"  href={"/dashboard"}>Return to Dashboard</Button>
             </div>
-            <h1>Entry {entryId}</h1>
+            <h1>What's the ONE thing YOU can do today that will make everything else easier or unnecessary?</h1>
+            <br />
             {entry ? (
             <Container>
                 <form>
@@ -68,7 +69,7 @@ const EntryView = () => {
                     <option value="COMPLETED">Completed</option>
                     <option value="PIVOTED">Pivoted</option>
                 </Form.Select>
-                
+                <br />
                 <h3>Date: {entry.date}</h3>
                 <p>Update date: 
                     <Form.Control
@@ -80,17 +81,21 @@ const EntryView = () => {
                         setDate("date", event.target.value);
                         updateEntryField("date", event.target.value)}}
                     />
-              </p>
+                </p>
+                <br />
                 <h3>Content: 
                     <textarea id="content" rows="2" cols="40" 
                         onChange={(event) => updateEntryField("content", event.target.value)}
                         value={tempEntry.content ? tempEntry.content : "Type your ONE thing today"}
                     ></textarea>
                 </h3>
+                <br />
                 <h3>Author: {entry.author.username}</h3>
                 </form>
-                
+                <br />
+                <div className="d-flex gap-2">
                 <Button 
+                size="lg"
                     type="submit"
                     onClick={() => {
                         updateEntryRepo()}}
@@ -98,13 +103,15 @@ const EntryView = () => {
                 >Update Entry</Button>
 
                 <Button 
+                size="lg"
                     type="submit"
                     variant="danger"
                     onClick={() => {
-                        
+
                         deleteEntry()}}
                         
                 >Delete Entry</Button>
+                </div>
 
             </Container>
             ) : (
