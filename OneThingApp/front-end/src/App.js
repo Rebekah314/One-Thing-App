@@ -1,7 +1,7 @@
 import './App.css';
 import { useEffect } from "react";
 import { useLocalState } from './util/useLocalStorage';
-import {  Routes, Route} from "react-router-dom";
+import {  Routes, Route, Redirect} from "react-router-dom";
 import Dashboard from './Dashboard';
 import Homepage from './Homepage';
 import Login from './Login';
@@ -9,6 +9,7 @@ import Register from './Register';
 import PrivateRoute from './PrivateRoute';
 import EntryView from './EntryView';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import RedirectToHomepage from './RedirectToHomepage';
 
 function App() {
 
@@ -84,6 +85,7 @@ const [jwt, setJwt] = useLocalState("", "jwt");
         <Route path="/register" element={ <Register />} />
 
         <Route path="/" element={ <Homepage />} />
+        <Route render={() => <Redirect to={{pathname: "/homepage"}} />} />
 
       </Routes>
   );
