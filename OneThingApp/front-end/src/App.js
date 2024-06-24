@@ -70,7 +70,6 @@ const [jwt, setJwt] = useLocalState("", "jwt");
             </PrivateRoute>
           }
         />
-
         <Route
           path="/entries/:id"
           element={
