@@ -41,7 +41,7 @@ const Dashboard = () => {
                     onClick={() => processLogout()}
                 >Logout</Button>
             </div>
-            <h3>What's the ONE thing YOU can do today that will make everything else easier or unnecessary?</h3>
+            <h3 style={{width: "75%"}}>What's the ONE thing YOU can do today that will make everything else easier or unnecessary?</h3>
             
             <Button size="lg"onClick={() => createEntry()}>Create Entry: my ONE thing today</Button>
             
